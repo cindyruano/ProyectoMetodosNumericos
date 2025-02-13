@@ -89,7 +89,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         ));
         tblTablaBiseccion.setViewportView(jTable1);
 
-        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 850, 300));
+        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 850, 310));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -98,24 +98,24 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
 
         intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloA.setText("INTERVALO A:");
-        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, 20));
+        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, 20));
 
         intervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloB.setText("INTERVALO B:");
-        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 267, -1, 30));
+        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, 30));
 
         txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 150, -1));
+        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 150, -1));
 
         txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 150, -1));
+        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 150, -1));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 100, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 100, 30));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
