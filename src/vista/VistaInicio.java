@@ -93,12 +93,12 @@ public class VistaInicio extends javax.swing.JFrame {
         nombrePropietario.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         nombrePropietario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombrePropietario.setText("Luis Aroche");
-        fondoPanel.add(nombrePropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 1150, -1));
+        fondoPanel.add(nombrePropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 640, 1150, -1));
 
         nombrePropietario1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         nombrePropietario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombrePropietario1.setText("Cindy Ruano");
-        fondoPanel.add(nombrePropietario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 640, 1150, -1));
+        fondoPanel.add(nombrePropietario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
