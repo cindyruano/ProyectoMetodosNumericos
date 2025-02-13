@@ -36,6 +36,7 @@ public class VistaInicio extends javax.swing.JFrame {
         btnRaicesPolinomios = new javax.swing.JButton();
         btnEcuaciones = new javax.swing.JButton();
         nombrePropietario = new javax.swing.JLabel();
+        nombrePropietario1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,14 +92,19 @@ public class VistaInicio extends javax.swing.JFrame {
 
         nombrePropietario.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         nombrePropietario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombrePropietario.setText("Cindy Ruano");
-        fondoPanel.add(nombrePropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 640, 1150, -1));
+        nombrePropietario.setText("Luis Aroche");
+        fondoPanel.add(nombrePropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 1150, -1));
+
+        nombrePropietario1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        nombrePropietario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombrePropietario1.setText("Cindy Ruano");
+        fondoPanel.add(nombrePropietario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 640, 1150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +163,7 @@ public class VistaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel nombrePropietario;
+    private javax.swing.JLabel nombrePropietario1;
     private javax.swing.JLabel pregunta;
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel titulo;
