@@ -1,6 +1,10 @@
 package vista;
 
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import proyectometodosnumericos.metodoBiseccion;
 
 /**
  *
@@ -17,6 +21,17 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    // Método para generar una tabla de valores de Y
+    public void generarTabla(String funcion, double inicio, double fin, double paso) {
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        model.setRowCount(0); // Limpiar la tabla
+
+        for (double x = inicio; x <= fin; x += paso) {
+            double y = metodoBiseccion.evaluarFuncion(funcion, x);
+            model.addRow(new Object[]{String.format("%.4f", x), String.format("%.4f", y)});
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +46,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         tblTablaBiseccion = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         funcion = new javax.swing.JLabel();
         intervaloA = new javax.swing.JLabel();
         intervaloB = new javax.swing.JLabel();
@@ -42,21 +57,14 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         txtRecurrencia = new javax.swing.JTextField();
         btnRegresar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
-        btnCoeficiente1 = new javax.swing.JTextField();
-        btnVariable1 = new javax.swing.JTextField();
-        btnExponente1 = new javax.swing.JTextField();
-        btnCoeficiente2 = new javax.swing.JTextField();
-        btnVariable2 = new javax.swing.JTextField();
-        btnExponente2 = new javax.swing.JTextField();
-        btnCoeficiente3 = new javax.swing.JTextField();
-        btnVariable3 = new javax.swing.JTextField();
-        btnExponente3 = new javax.swing.JTextField();
-        btnCoeficiente4 = new javax.swing.JTextField();
-        btnVariable4 = new javax.swing.JTextField();
-        btnExponente4 = new javax.swing.JTextField();
+        txtFuncion = new javax.swing.JTextField();
+        tblTablaBiseccion1 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1150, 686));
 
         fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -75,56 +83,66 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         separador.setOpaque(true);
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 127, 310, -1));
 
-        jTable1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "i", "a", "b", "f(a)", "f(b)", "Xr", "f(Xr)", "Tolerancia"
+                "X", "Y"
             }
         ));
-        tblTablaBiseccion.setViewportView(jTable1);
+        tblTablaBiseccion.setViewportView(jTable);
 
-        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 850, 310));
+        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 280, 140, 340));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         funcion.setText("FUNCIÓN:");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 100, -1));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 80, 20));
 
         intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloA.setText("INTERVALO A:");
-        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, 20));
+        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, 20));
 
         intervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloB.setText("INTERVALO B:");
-        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, 30));
+        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, 30));
 
         txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 150, -1));
+        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 150, -1));
 
         txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 150, -1));
+        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 150, -1));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 100, 30));
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 100, 30));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
         recurrencia.setAutoscrolls(true);
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 190, 190, 30));
+        txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecurrenciaActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 190, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -135,7 +153,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 90, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 90, 30));
 
         btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
@@ -146,19 +164,47 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 90, 30));
-        fondoPanel.add(btnCoeficiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 30, -1));
-        fondoPanel.add(btnVariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 30, -1));
-        fondoPanel.add(btnExponente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 158, 30, -1));
-        fondoPanel.add(btnCoeficiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 30, -1));
-        fondoPanel.add(btnVariable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 30, -1));
-        fondoPanel.add(btnExponente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 158, 30, -1));
-        fondoPanel.add(btnCoeficiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 30, -1));
-        fondoPanel.add(btnVariable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 30, -1));
-        fondoPanel.add(btnExponente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 158, 30, -1));
-        fondoPanel.add(btnCoeficiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 30, -1));
-        fondoPanel.add(btnVariable4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 30, -1));
-        fondoPanel.add(btnExponente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 158, 30, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 50, 90, 30));
+
+        txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 150, -1));
+
+        jTable2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "i", "a", "b", "f(a)", "f(b)", "Xr", "f(Xr)", "Tolerancia"
+            }
+        ));
+        tblTablaBiseccion1.setViewportView(jTable2);
+
+        fondoPanel.add(tblTablaBiseccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 960, 340));
+
+        jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jLabel1.setText("BUSCANDO INTERVALO X :");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, 20));
+
+        txtBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, 140, -1));
+
+        btnBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,6 +233,93 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        // TODO add your handling code here:
+        try {
+            String funcion = txtFuncion.getText().trim();
+            double a = Double.parseDouble(txtIntervaloA.getText().replace(",", ".")); // Reemplazar coma por punto
+            double b = Double.parseDouble(txtIntervaloB.getText().replace(",", ".")); // Reemplazar coma por punto
+
+            if (a >= b) {
+                JOptionPane.showMessageDialog(this, "Error: El intervalo A debe ser menor que el intervalo B.");
+                return;
+            }
+
+            double toleranciaFinal = 0.0001; // Tolerancia final deseada
+
+            // Obtener los datos de la bisección en una tabla
+            List<String[]> tabla = metodoBiseccion.biseccionTabla(funcion, a, b, toleranciaFinal);
+
+            // Obtener el modelo de la tabla
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            model.setRowCount(0); // Limpiar la tabla
+
+            // Llenar la tabla con los datos obtenidos
+            for (String[] fila : tabla) {
+                model.addRow(fila);
+            }
+
+            // Generar la tabla de valores de Y
+            generarTabla(funcion, a, b, 0.5); // Paso de 0.5 para la tabla de valores
+
+            JOptionPane.showMessageDialog(this, "Bisección completada.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Formato de número inválido. Usa punto (.) como separador decimal.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Obtener el rango de X ingresado en el campo "BUSCANDO INTERVALO X"
+            String rango = txtBuscar.getText().trim();
+            String[] partes = rango.split(","); // Dividir el rango en inicio y fin
+
+            if (partes.length != 2) {
+                JOptionPane.showMessageDialog(this, "Error: Ingresa el rango en el formato 'inicio,fin' (por ejemplo, -10,10).");
+                return;
+            }
+
+            double inicio = Double.parseDouble(partes[0].trim().replace(",", ".")); // Reemplazar coma por punto
+            double fin = Double.parseDouble(partes[1].trim().replace(",", ".")); // Reemplazar coma por punto
+
+            if (inicio >= fin) {
+                JOptionPane.showMessageDialog(this, "Error: El valor inicial debe ser menor que el valor final.");
+                return;
+            }
+
+            // Obtener la función ingresada
+            String funcion = txtFuncion.getText().trim();
+
+            // Obtener el modelo de la tabla X.Y
+            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+            model.setRowCount(0); // Limpiar la tabla
+
+            // Generar los valores de X y Y en el rango especificado
+            double paso = 1; // Paso para generar los valores de X
+            for (double x = inicio; x <= fin; x += paso) {
+                double y = metodoBiseccion.evaluarFuncion(funcion, x);
+                model.addRow(new Object[]{String.format("%.2f", x), String.format("%.2f", y)});
+            }
+
+            JOptionPane.showMessageDialog(this, "Tabla generada para X en el rango [" + inicio + ", " + fin + "].");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Formato de número inválido. Usa punto (.) como separador decimal.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,31 +357,25 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnCoeficiente1;
-    private javax.swing.JTextField btnCoeficiente2;
-    private javax.swing.JTextField btnCoeficiente3;
-    private javax.swing.JTextField btnCoeficiente4;
-    private javax.swing.JTextField btnExponente1;
-    private javax.swing.JTextField btnExponente2;
-    private javax.swing.JTextField btnExponente3;
-    private javax.swing.JTextField btnExponente4;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnResolver;
-    private javax.swing.JTextField btnVariable1;
-    private javax.swing.JTextField btnVariable2;
-    private javax.swing.JTextField btnVariable3;
-    private javax.swing.JTextField btnVariable4;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel intervaloA;
     private javax.swing.JLabel intervaloB;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTable jTable;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JSeparator separador;
     private javax.swing.JScrollPane tblTablaBiseccion;
+    private javax.swing.JScrollPane tblTablaBiseccion1;
     private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtFuncion;
     private javax.swing.JTextField txtIntervaloA;
     private javax.swing.JTextField txtIntervaloB;
     private javax.swing.JTextField txtRecurrencia;
