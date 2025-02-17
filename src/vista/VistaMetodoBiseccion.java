@@ -3,6 +3,8 @@ package vista;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import proyectometodosnumericos.metodoBiseccion;
 
@@ -20,6 +22,17 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
+    
+    /*
+    //MÉTODOS GET
+    public JTextField getTxtDato() {
+        return txtFuncion;
+    }
+
+    public JTable getTblNoAgrupados() {
+        return tblBiseccion;
+    }
+    */
 
     // Método para generar una tabla de valores de Y
     public void generarTabla(String funcion, double inicio, double fin, double paso) {
@@ -59,7 +72,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         txtFuncion = new javax.swing.JTextField();
         tblTablaBiseccion1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblBiseccion = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -97,12 +110,12 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         ));
         tblTablaBiseccion.setViewportView(jTable);
 
-        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 280, 140, 340));
+        fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 280, 140, 340));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         funcion.setText("FUNCIÓN:");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 80, 20));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 80, 20));
 
         intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloA.setText("INTERVALO A:");
@@ -134,7 +147,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
         recurrencia.setAutoscrolls(true);
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +155,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 txtRecurrenciaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 190, 30));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 140, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -153,7 +166,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 90, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 240, 90, 30));
 
         btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
@@ -164,13 +177,13 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 50, 90, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 240, 90, 30));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 150, -1));
 
-        jTable2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblBiseccion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        tblBiseccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -181,13 +194,13 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 "i", "a", "b", "f(a)", "f(b)", "Xr", "f(Xr)", "Tolerancia"
             }
         ));
-        tblTablaBiseccion1.setViewportView(jTable2);
+        tblTablaBiseccion1.setViewportView(tblBiseccion);
 
-        fondoPanel.add(tblTablaBiseccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 960, 340));
+        fondoPanel.add(tblTablaBiseccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 860, 340));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jLabel1.setText("BUSCANDO INTERVALO X :");
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, 20));
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, 20));
 
         txtBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +208,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 txtBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, 140, -1));
+        fondoPanel.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 140, -1));
 
         btnBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnBuscar.setText("BUSCAR");
@@ -204,7 +217,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, -1, -1));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,7 +265,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
             List<String[]> tabla = metodoBiseccion.biseccionTabla(funcion, a, b, toleranciaFinal);
 
             // Obtener el modelo de la tabla
-            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            DefaultTableModel model = (DefaultTableModel) tblBiseccion.getModel();
             model.setRowCount(0); // Limpiar la tabla
 
             // Llenar la tabla con los datos obtenidos
@@ -360,7 +373,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton btnResolver;
+    public javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel imagen;
@@ -368,14 +381,14 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     private javax.swing.JLabel intervaloB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTable jTable;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JSeparator separador;
+    private javax.swing.JTable tblBiseccion;
     private javax.swing.JScrollPane tblTablaBiseccion;
     private javax.swing.JScrollPane tblTablaBiseccion1;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtFuncion;
+    public javax.swing.JTextField txtFuncion;
     private javax.swing.JTextField txtIntervaloA;
     private javax.swing.JTextField txtIntervaloB;
     private javax.swing.JTextField txtRecurrencia;
