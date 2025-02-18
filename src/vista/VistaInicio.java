@@ -76,18 +76,33 @@ public class VistaInicio extends javax.swing.JFrame {
         btnMetodoAbierto.setText("MÉTODOS ABIERTOS");
         btnMetodoAbierto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMetodoAbierto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMetodoAbierto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetodoAbiertoActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnMetodoAbierto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 240, 40));
 
         btnRaicesPolinomios.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnRaicesPolinomios.setText("RAICES de POLINOMIOS");
         btnRaicesPolinomios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRaicesPolinomios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRaicesPolinomios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRaicesPolinomiosActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnRaicesPolinomios, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 240, 40));
 
         btnEcuaciones.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnEcuaciones.setText("ECUACIONES");
         btnEcuaciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnEcuaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEcuaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEcuacionesActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnEcuaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 240, 40));
 
         nombrePropietario.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
@@ -119,6 +134,24 @@ public class VistaInicio extends javax.swing.JFrame {
         va.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMetodoCerradoActionPerformed
+
+    private void btnMetodoAbiertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodoAbiertoActionPerformed
+        VistaMetodoAbierto va  = new VistaMetodoAbierto();
+        va.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMetodoAbiertoActionPerformed
+
+    private void btnRaicesPolinomiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaicesPolinomiosActionPerformed
+        VistaRaicesPolinomios va  = new VistaRaicesPolinomios();
+        va.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRaicesPolinomiosActionPerformed
+
+    private void btnEcuacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEcuacionesActionPerformed
+        VistaEcuaciones va  = new VistaEcuaciones();
+        va.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnEcuacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,7 +187,6 @@ public class VistaInicio extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEcuaciones;
     private javax.swing.JButton btnMetodoAbierto;
