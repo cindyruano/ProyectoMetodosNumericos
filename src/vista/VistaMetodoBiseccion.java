@@ -1,7 +1,9 @@
 package vista;
 
+import controladores.ControladorBiseccion;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,6 +16,8 @@ import proyectometodosnumericos.metodoBiseccion;
  */
 public class VistaMetodoBiseccion extends javax.swing.JFrame {
 
+    private ControladorBiseccion controlador;
+
     /**
      * Creates new form VistaMetodoBiseccion
      */
@@ -21,8 +25,34 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        controlador = new ControladorBiseccion(this);
     }
-    
+
+    // Método para obtener los valores de la interfaz gráfica
+    public JTextField getTxtFuncion() {
+        return txtFuncion;
+    }
+
+    public JTextField getTxtIntervaloA() {
+        return txtIntervaloA;
+    }
+
+    public JTextField getTxtIntervaloB() {
+        return txtIntervaloB;
+    }
+
+    public JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+    public JTable getTblBiseccion() {
+        return tblBiseccion;
+    }
+
+    public JTable getJTable() {
+        return jTable;
+    }
+
     /*
     //MÉTODOS GET
     public JTextField getTxtDato() {
@@ -32,8 +62,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     public JTable getTblNoAgrupados() {
         return tblBiseccion;
     }
-    */
-
+     */
     // Método para generar una tabla de valores de Y
     public void generarTabla(String funcion, double inicio, double fin, double paso) {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -249,39 +278,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
         // TODO add your handling code here:
-        try {
-            String funcion = txtFuncion.getText().trim();
-            double a = Double.parseDouble(txtIntervaloA.getText().replace(",", ".")); // Reemplazar coma por punto
-            double b = Double.parseDouble(txtIntervaloB.getText().replace(",", ".")); // Reemplazar coma por punto
-
-            if (a >= b) {
-                JOptionPane.showMessageDialog(this, "Error: El intervalo A debe ser menor que el intervalo B.");
-                return;
-            }
-
-            double toleranciaFinal = 0.0001; // Tolerancia final deseada
-
-            // Obtener los datos de la bisección en una tabla
-            List<String[]> tabla = metodoBiseccion.biseccionTabla(funcion, a, b, toleranciaFinal);
-
-            // Obtener el modelo de la tabla
-            DefaultTableModel model = (DefaultTableModel) tblBiseccion.getModel();
-            model.setRowCount(0); // Limpiar la tabla
-
-            // Llenar la tabla con los datos obtenidos
-            for (String[] fila : tabla) {
-                model.addRow(fila);
-            }
-
-            // Generar la tabla de valores de Y
-            generarTabla(funcion, a, b, 0.5); // Paso de 0.5 para la tabla de valores
-
-            JOptionPane.showMessageDialog(this, "Bisección completada.");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error: Formato de número inválido. Usa punto (.) como separador decimal.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-        }
+        controlador.resolverBiseccion();
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
@@ -290,6 +287,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -348,16 +346,24 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoBiseccion.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
