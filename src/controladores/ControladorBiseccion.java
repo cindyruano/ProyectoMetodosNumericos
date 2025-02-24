@@ -34,7 +34,7 @@ public class ControladorBiseccion {
 
             double toleranciaFinal = 0.0001; // Tolerancia final deseada
 
-            // Llamada al método de bisección
+            // Llamada al método de bisección para obtener la tabla de iteraciones
             List<String[]> tabla = metodoBiseccion.biseccionTabla(funcion, a, b, toleranciaFinal);
 
             // Obtener el modelo de la tabla y llenarlo con los datos
@@ -45,6 +45,13 @@ public class ControladorBiseccion {
             for (String[] fila : tabla) {
                 model.addRow(fila);
             }
+
+            // Obtener la respuesta final (última fila de la tabla)
+            String[] ultimaFila = tabla.get(tabla.size() - 1);
+            String respuestaFinal = ultimaFila[5]; // El valor de Xr (raíz aproximada) está en la columna 5
+
+            // Mostrar la respuesta final en txtRecurrencia
+            vista.getTxtRecurrencia().setText(respuestaFinal);
 
             JOptionPane.showMessageDialog(vista, "Bisección completada.");
         } catch (NumberFormatException e) {

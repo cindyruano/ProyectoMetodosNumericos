@@ -285,6 +285,10 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRecurrenciaActionPerformed
 
+    public JTextField getTxtRecurrencia() {
+        return txtRecurrencia;
+    }
+
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
 
