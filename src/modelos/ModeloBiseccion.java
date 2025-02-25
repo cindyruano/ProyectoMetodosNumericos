@@ -43,30 +43,6 @@ public class ModeloBiseccion {
         double fxr = evaluarFuncion(funcion, xr);
 
         tabla.add(new String[]{"1", String.valueOf(a), String.valueOf(b), String.valueOf(fa), String.valueOf(fb), String.valueOf(xr), String.valueOf(fxr), String.valueOf(tolerancia)});
-
         return tabla;
     }
-
-    //FUNCIÓN
-    /*public class Polinomio {
-
-        private double f1, f2, f3, f4, f5;
-
-        public Polinomio(double f1, double f2, double f3, double f4, double f5) {
-            this.f1 = f1;
-            this.f2 = f2;
-            this.f3 = f3;
-            this.f4 = f4;
-            this.f5 = f5;
-        }
-
-//        public double calcularValor(double x) {
-//            return f1 * Math.pow(x, 4) + f2 * Math.pow(x, 3) + f3 * Math.pow(x, 2) + f4 * x + f5;
-//        }
-    }
-
-    //A
-//    public double CalcularA() {
-//        Collections.sort(funcion);
-//    }*/
 }

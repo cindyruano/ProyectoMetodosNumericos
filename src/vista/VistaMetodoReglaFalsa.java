@@ -28,31 +28,42 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
         btnInicio = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
+        tblTablaReglaFalsa = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        funcion = new javax.swing.JLabel();
+        intervaloA = new javax.swing.JLabel();
+        intervaloB = new javax.swing.JLabel();
+        btnResolver = new javax.swing.JButton();
+        txtFuncion = new javax.swing.JTextField();
+        txtIntervaloA = new javax.swing.JTextField();
+        txtIntervaloB = new javax.swing.JTextField();
+        txtRecurrenncia = new javax.swing.JTextField();
+        recurrencia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 70, 1150, -1));
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1150, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("MÉTODO REGLA FALSA");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 140, 1150, -1));
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("MÉTODO REGLA FALSA");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1150, -1));
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
-        jSeparator1.setOpaque(true);
-        fondoPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 180, 10));
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 127, 330, -1));
 
         btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
@@ -62,7 +73,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, 100, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 80, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -72,7 +83,59 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 80, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "i", "a", "b", "f(a)", "f(b)", "Xr", "f(Xr)", "Tolerancia"
+            }
+        ));
+        tblTablaReglaFalsa.setViewportView(jTable1);
+
+        fondoPanel.add(tblTablaReglaFalsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 890, 300));
+
+        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        funcion.setText("FUNCIÓN: ");
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 110, -1));
+
+        intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        intervaloA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervaloA.setText("INTERVALO A:");
+        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 100, 20));
+
+        intervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        intervaloB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        intervaloB.setText("INTERVALO B:");
+        intervaloB.setToolTipText("");
+        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 100, 30));
+
+        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnResolver.setText("RESOLVER");
+        btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 80, 30));
+
+        txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 240, -1));
+
+        txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 140, -1));
+
+        txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
+
+        txtRecurrenncia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtRecurrenncia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 110, -1));
+
+        recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        recurrencia.setText("RECURRENCIA:");
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,9 +201,20 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel funcion;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel intervaloA;
+    private javax.swing.JLabel intervaloB;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel recurrencia;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JScrollPane tblTablaReglaFalsa;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtFuncion;
+    private javax.swing.JTextField txtIntervaloA;
+    private javax.swing.JTextField txtIntervaloB;
+    private javax.swing.JTextField txtRecurrenncia;
     // End of variables declaration//GEN-END:variables
 }

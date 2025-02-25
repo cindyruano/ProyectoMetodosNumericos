@@ -53,16 +53,6 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         return jTable;
     }
 
-    /*
-    //MÉTODOS GET
-    public JTextField getTxtDato() {
-        return txtFuncion;
-    }
-
-    public JTable getTblNoAgrupados() {
-        return tblBiseccion;
-    }
-     */
     // Método para generar una tabla de valores de Y
     public void generarTabla(String funcion, double inicio, double fin, double paso) {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -102,7 +92,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         txtFuncion = new javax.swing.JTextField();
         tblTablaBiseccion1 = new javax.swing.JScrollPane();
         tblBiseccion = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        buscarIntervalo = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
 
@@ -113,8 +103,9 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         fondoPanel.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 120, 100));
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1150, 100));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -142,27 +133,29 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         fondoPanel.add(tblTablaBiseccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 280, 140, 340));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        funcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         funcion.setText("FUNCIÓN:");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 80, 20));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 100, 20));
 
         intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        intervaloA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         intervaloA.setText("INTERVALO A:");
-        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, 20));
+        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 100, 20));
 
         intervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        intervaloB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         intervaloB.setText("INTERVALO B:");
-        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, 30));
+        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 100, 30));
 
         txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 150, -1));
+        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 150, -1));
 
         txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 150, -1));
+        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 150, -1));
 
-        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnResolver.addActionListener(new java.awt.event.ActionListener() {
@@ -170,13 +163,13 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 100, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 90, 30));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
         recurrencia.setAutoscrolls(true);
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 180, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +177,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 txtRecurrenciaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 140, 30));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, 140, -1));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -209,7 +202,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 240, 90, 30));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 150, -1));
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 260, -1));
 
         tblBiseccion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         tblBiseccion.setModel(new javax.swing.table.DefaultTableModel(
@@ -227,9 +220,10 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
 
         fondoPanel.add(tblTablaBiseccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 860, 340));
 
-        jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        jLabel1.setText("BUSCANDO INTERVALO X :");
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, 20));
+        buscarIntervalo.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        buscarIntervalo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        buscarIntervalo.setText("BUSCANDO INTERVALO X :");
+        fondoPanel.add(buscarIntervalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, 20));
 
         txtBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -237,24 +231,23 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
                 txtBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 140, -1));
+        fondoPanel.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 140, -1));
 
-        btnBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        btnBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 160, -1, -1));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 170, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,25 +270,20 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInicioActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        // TODO add your handling code here:
         controlador.resolverBiseccion();
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRecurrenciaActionPerformed
 
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
     public JTextField getTxtRecurrencia() {
         return txtRecurrencia;
     }
-
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
         try {
             // Obtener el rango de X ingresado en el campo "BUSCANDO INTERVALO X"
             String rango = txtBuscar.getText().trim();
@@ -384,12 +372,12 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     public javax.swing.JButton btnResolver;
+    private javax.swing.JLabel buscarIntervalo;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel intervaloA;
     private javax.swing.JLabel intervaloB;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTable jTable;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JSeparator separador;

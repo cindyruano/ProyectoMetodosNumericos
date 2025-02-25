@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyectometodosnumericos;
 
 import java.util.ArrayList;
@@ -22,7 +18,6 @@ public class metodoBiseccion {
         for (String termino : terminos) {
             resultado += evaluarTermino(termino, x); // Evaluar cada término
         }
-
         return resultado;
     }
 
@@ -60,7 +55,6 @@ public class metodoBiseccion {
         if (partes.length > 1 && !partes[1].isEmpty()) {
             exponente = Integer.parseInt(partes[1]);
         }
-
         return coeficiente * Math.pow(x, exponente);
     }
 
@@ -94,7 +88,6 @@ public class metodoBiseccion {
                 fa = fc;
             }
         }
-
         return c;
     }
 
@@ -154,7 +147,6 @@ public class metodoBiseccion {
             toleranciaActual = Math.abs(b - a);
             iteracion++;
         }
-
         return tabla;
     }
 
@@ -173,7 +165,6 @@ public class metodoBiseccion {
                 String.format("%.4f", y)
             });
         }
-
         return tabla;
     }
 

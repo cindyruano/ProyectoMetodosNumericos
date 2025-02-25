@@ -29,36 +29,59 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         fondoPanel = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
+        btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 90, 30));
 
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 90, 30));
+
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1140, -1));
+
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("MÉTODO de NEWTON");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1150, -1));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 270, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
 
         pack();
@@ -115,5 +138,8 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
