@@ -1,13 +1,17 @@
-
 package vista;
 
+import controladores.ControladorReglaFalsa;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author cindy
  */
 public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
+
+    private ControladorReglaFalsa controlador;
 
     /**
      * Creates new form VistaMetodoReglaFalsa
@@ -16,8 +20,30 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        controlador = new ControladorReglaFalsa(this);
     }
 
+    // Método para obtener los valores de la interfaz gráfica
+    public JTextField getTxtFuncion() {
+        return txtFuncion;
+    }
+
+    public JTextField getTxtIntervaloA() {
+        return txtIntervaloA;
+    }
+
+    public JTextField getTxtIntervaloB() {
+        return txtIntervaloB;
+    }
+
+    public JScrollPane getTblTablaReglaFalsa() {
+        return tblTablaReglaFalsa;
+    }
+    
+    public JTextField getTxtRecurrencia() {
+        return txtRecurrencia;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +60,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         tblTablaReglaFalsa = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtReglaFalsa = new javax.swing.JTable();
         funcion = new javax.swing.JLabel();
         intervaloA = new javax.swing.JLabel();
         intervaloB = new javax.swing.JLabel();
@@ -42,7 +68,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         txtFuncion = new javax.swing.JTextField();
         txtIntervaloA = new javax.swing.JTextField();
         txtIntervaloB = new javax.swing.JTextField();
-        txtRecurrenncia = new javax.swing.JTextField();
+        txtRecurrencia = new javax.swing.JTextField();
         recurrencia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,7 +111,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         });
         fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtReglaFalsa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -96,7 +122,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 "i", "a", "b", "f(a)", "f(b)", "Xr", "f(Xr)", "Tolerancia"
             }
         ));
-        tblTablaReglaFalsa.setViewportView(jTable1);
+        tblTablaReglaFalsa.setViewportView(jtReglaFalsa);
 
         fondoPanel.add(tblTablaReglaFalsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 890, 300));
 
@@ -119,19 +145,44 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 80, 30));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFuncionActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 240, -1));
 
         txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtIntervaloA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIntervaloAActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 140, -1));
 
         txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtIntervaloB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIntervaloBActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
 
-        txtRecurrenncia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtRecurrenncia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 110, -1));
+        txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecurrenciaActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 110, -1));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setText("RECURRENCIA:");
@@ -162,6 +213,27 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void txtFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFuncionActionPerformed
+
+    private void txtIntervaloAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntervaloAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIntervaloAActionPerformed
+
+    private void txtIntervaloBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntervaloBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIntervaloBActionPerformed
+
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        // TODO add your handling code here:
+        controlador.resolverFalsa();
+    }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +279,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel intervaloA;
     private javax.swing.JLabel intervaloB;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtReglaFalsa;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JSeparator separador;
     private javax.swing.JScrollPane tblTablaReglaFalsa;
@@ -215,6 +287,6 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
     private javax.swing.JTextField txtFuncion;
     private javax.swing.JTextField txtIntervaloA;
     private javax.swing.JTextField txtIntervaloB;
-    private javax.swing.JTextField txtRecurrenncia;
+    private javax.swing.JTextField txtRecurrencia;
     // End of variables declaration//GEN-END:variables
 }

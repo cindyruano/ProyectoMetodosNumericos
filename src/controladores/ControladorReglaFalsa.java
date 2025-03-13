@@ -4,31 +4,24 @@
  */
 package controladores;
 
-/**
- * 
- * @author luisd
- */
-
+import proyectometodosnumericos.metodoReglaFalsa;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import proyectometodosnumericos.metodoBiseccion;
-import vista.VistaMetodoBiseccion;
+import vista.VistaMetodoReglaFalsa;
 
-/**
- *
- * @author cindy
- */
-public class ControladorBiseccion {
+public class ControladorReglaFalsa {
 
-    private VistaMetodoBiseccion vista;  // Vista (Interfaz gráfica) donde se encuentran los campos de entrada y la tabla
-    private metodoBiseccion biseccion;
+    private metodoReglaFalsa reglaFalsa;
+    private VistaMetodoReglaFalsa vista;
 
-    public ControladorBiseccion(VistaMetodoBiseccion vista) {
+    public ControladorReglaFalsa(VistaMetodoReglaFalsa vista) {
         this.vista = vista;
+        this.reglaFalsa = new metodoReglaFalsa(); // Inicializar la instancia de metodoReglaFalsa
     }
 
-    public void resolverBiseccion() {
+    public void resolverFalsa() {
         try {
             String funcion = vista.getTxtFuncion().getText().trim();
             double a = Double.parseDouble(vista.getTxtIntervaloA().getText().replace(",", "."));
@@ -41,14 +34,17 @@ public class ControladorBiseccion {
 
             double toleranciaFinal = 0.0001; // Tolerancia final deseada
 
-            // Llamada al método de bisección para obtener la tabla de iteraciones
-            List<String[]> tabla = metodoBiseccion.biseccionTabla(funcion, a, b, toleranciaFinal);
+            // Llamada al método de regla falsa para obtener la tabla de iteraciones
+            List<String[]> tabla = reglaFalsa.reglaFalsaTabla(funcion, a, b, toleranciaFinal);
 
-            // Obtener el modelo de la tabla y llenarlo con los datos
-            DefaultTableModel model = (DefaultTableModel) vista.getTblBiseccion().getModel();
+            // Obtener la JTable desde el JScrollPane
+            JTable table = (JTable) vista.getTblTablaReglaFalsa().getViewport().getView();
+
+            // Obtener el modelo de la tabla y limpiarlo
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
             model.setRowCount(0); // Limpiar la tabla
 
-            // Llenar la tabla con los datos de la bisección
+            // Llenar la tabla con los datos de la regla falsa
             for (String[] fila : tabla) {
                 model.addRow(fila);
             }
@@ -60,11 +56,13 @@ public class ControladorBiseccion {
             // Mostrar la respuesta final en txtRecurrencia
             vista.getTxtRecurrencia().setText(respuestaFinal);
 
-            JOptionPane.showMessageDialog(vista, "Método de Bisección completado.");
+            JOptionPane.showMessageDialog(vista, "Método de Regla Falsa completado.");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(vista, "Error: Formato de número inválido. Usa punto (.) como separador decimal.");
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(vista, "Error: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "Error inesperado: " + e.getMessage());
         }
     }
 }
