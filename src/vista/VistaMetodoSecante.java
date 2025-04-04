@@ -29,9 +29,24 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         fondoPanel = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
+        funcion = new javax.swing.JLabel();
+        xi_1 = new javax.swing.JLabel();
+        xi = new javax.swing.JLabel();
+        recurrencia = new javax.swing.JLabel();
+        txtFuncion = new javax.swing.JTextField();
+        txtXi_1 = new javax.swing.JTextField();
+        txtXi = new javax.swing.JTextField();
+        txtRecurrencia = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTablaSecante = new javax.swing.JTable();
+        btnResolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegresar.setText("REGRESAR");
@@ -50,11 +65,53 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         });
         fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
 
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1150, -1));
+
+        titulo.setText("MÉTODO SECANTE");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 170, 20));
+
+        funcion.setText("FUNCIÓN: ");
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+
+        xi_1.setText("Xi_1:");
+        fondoPanel.add(xi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+
+        xi.setText("Xi: ");
+        fondoPanel.add(xi, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
+
+        recurrencia.setText("RECURRENCIA:");
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, -1));
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+        fondoPanel.add(txtXi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+
+        tblTablaSecante.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblTablaSecante);
+
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 640, 240));
+
+        btnResolver.setText("RESOLVER");
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,6 +171,20 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel funcion;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel recurrencia;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JTable tblTablaSecante;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtFuncion;
+    private javax.swing.JTextField txtRecurrencia;
+    private javax.swing.JTextField txtXi;
+    private javax.swing.JTextField txtXi_1;
+    private javax.swing.JLabel xi;
+    private javax.swing.JLabel xi_1;
     // End of variables declaration//GEN-END:variables
 }
