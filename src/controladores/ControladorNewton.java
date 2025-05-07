@@ -7,7 +7,6 @@ package controladores;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.ModeloNewton;
 import proyectometodosnumericos.MetodoNewton;
 import vista.VistaMetodoNewton;
 
