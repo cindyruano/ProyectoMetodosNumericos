@@ -1,9 +1,14 @@
 package vista;
 
-import javax.swing.JFrame;
 import controladores.ControladorNewton;
-import modelos.ModeloNewton;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import proyectometodosnumericos.MetodoNewton;
 
 /**
  *
@@ -18,9 +23,59 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        
+         // Añadir listener para que al perder foco el txtFuncion actualice txtFuncionDerivada
+        txtFuncion.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                actualizarFuncionDerivada();
+            }
+        });
+
+        // También actualizar derivada si el usuario pulsa Enter en txtFuncion
+        txtFuncion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarFuncionDerivada();
+            }
+        });
+    }
+    
+
+    public JTextField getTxtFuncion() {
+        return txtFuncion;
     }
 
+    public JTextField getTxtXi() {
+        return txtXi;
+    }
 
+    public JTextField getTxtFuncionDerivada() {
+        return txtFuncionDerivada;
+    }
+
+    public JTextField getTxtRecurrencia() {
+        return txtRecurrencia;
+    }
+
+    public JTable getTblTablaNewton() {
+        return jTable1;
+    }
+    
+     private void actualizarFuncionDerivada() {
+        try {
+            String funcion = txtFuncion.getText().trim();
+            if (!funcion.isEmpty()) {
+                String derivada = MetodoNewton.derivarFuncion(funcion);
+                txtFuncionDerivada.setText(derivada);
+            } else {
+                txtFuncionDerivada.setText("");
+            }
+        } catch (Exception ex) {
+            // En caso de error, limpiar el campo o dejar mensaje
+            txtFuncionDerivada.setText("Error derivando");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,6 +162,11 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 110, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecurrenciaActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 150, -1));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
@@ -185,12 +245,17 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFuncionDerivadaActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-
+        ControladorNewton controlador = new ControladorNewton(this);
+        controlador.resolverNewton();
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void txtFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFuncionActionPerformed
+
+    private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,16 +271,24 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoNewton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoNewton.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoNewton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoNewton.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoNewton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoNewton.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMetodoNewton.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMetodoNewton.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

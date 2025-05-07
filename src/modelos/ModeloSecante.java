@@ -4,15 +4,10 @@
  */
 package modelos;
 
-import java.util.List;
-import proyectometodosnumericos.MetodoNewton;
-
 /**
  *
- * @author cindy
+ * @author luisd
  */
-import java.util.List;
-
-public class ModeloNewton {
-
+public class ModeloSecante {
+    
 }

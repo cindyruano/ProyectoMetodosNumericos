@@ -1,6 +1,11 @@
 package vista;
 
+import controladores.ControladorSecante;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,6 +20,38 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+    }
+
+    public JTextField getTxtFuncion() {
+        return txtFuncion;
+    }
+
+    public JTextField getTxtXi_1() {
+        return txtXi_1;
+    }
+
+    public JTextField getTxtXi() {
+        return txtXi;
+    }
+
+    public JTextField getTxtRecurrencia() {
+        return txtRecurrencia;
+    }
+
+    public JTable getTblTablaSecante() {
+        return tblTablaSecante;
+    }
+
+    public JButton getBtnResolver() {
+        return btnResolver;
+    }
+
+    public JLabel getXi() {
+        return xi;
+    }
+
+    public JLabel getXi_1() {
+        return xi_1;
     }
 
     /**
@@ -55,7 +92,7 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
 
         btnInicio.setText("INICIO");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -63,49 +100,83 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 300, -1, -1));
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
         fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1150, -1));
 
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         titulo.setText("MÉTODO SECANTE");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
-        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 170, 20));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 170, 20));
 
+        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         funcion.setText("FUNCIÓN: ");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 100, -1));
 
+        xi_1.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
         xi_1.setText("Xi_1:");
-        fondoPanel.add(xi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+        fondoPanel.add(xi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 50, 20));
 
-        xi.setText("Xi: ");
-        fondoPanel.add(xi, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
+        xi.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
+        xi.setText("Xi : ");
+        fondoPanel.add(xi, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 30, 30));
 
+        recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, -1));
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
-        fondoPanel.add(txtXi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
-        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, -1, -1));
+
+        txtFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFuncionActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 170, -1));
+
+        txtXi_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXi_1ActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtXi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 80, -1));
+
+        txtXi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtXiActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 80, -1));
+
+        txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecurrenciaActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 190, 120, -1));
 
         tblTablaSecante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "i", "xi_1", "xi", "f(xi_1)", "f(xi)", "xr", "Tolerancia"
             }
         ));
         jScrollPane1.setViewportView(tblTablaSecante);
 
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 640, 240));
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 960, 310));
 
         btnResolver.setText("RESOLVER");
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +203,27 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void txtXiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtXiActionPerformed
+
+    private void txtFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFuncionActionPerformed
+
+    private void txtXi_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXi_1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtXi_1ActionPerformed
+
+    private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
+
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        ControladorSecante controlador = new ControladorSecante(this);
+        controlador.resolverSecante(); // TODO add your handling code here:
+    }//GEN-LAST:event_btnResolverActionPerformed
 
     /**
      * @param args the command line arguments

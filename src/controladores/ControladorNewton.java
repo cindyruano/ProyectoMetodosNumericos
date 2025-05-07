@@ -4,36 +4,61 @@
  */
 package controladores;
 
-import modelos.ModeloNewton;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelos.ModeloNewton;
+import proyectometodosnumericos.MetodoNewton;
+import vista.VistaMetodoNewton;
+
 /**
  *
  * @author cindy
  */
 public class ControladorNewton {
 
-    private ModeloNewton funcion;
-    private DefaultTableModel modeloTabla;
+    private VistaMetodoNewton vista;  // Vista (Interfaz gráfica) donde se encuentran los campos de entrada y la tabla
+    private MetodoNewton metodoNewton;
 
-    public ControladorNewton(ModeloNewton funcion, DefaultTableModel modeloTabla) {
-        this.funcion = funcion;
-        this.modeloTabla = modeloTabla;
+    public ControladorNewton(VistaMetodoNewton vista) {
+        this.vista = vista;
+        this.metodoNewton = new MetodoNewton();
     }
+    
+    
 
-    public String calcularDerivada() {
-        return funcion.obtenerDerivada();
-    }
+    public void resolverNewton() {
+        try {
+            String funcion = vista.getTxtFuncion().getText().trim();
+            double xi = Double.parseDouble(vista.getTxtXi().getText().replace(",", "."));
+            String funcionDerivada = vista.getTxtFuncionDerivada().getText().trim();
+            double tolerancia = 0.0001; // Tolerancia final deseada
+            int maxIteraciones = 100; // Número máximo de iteraciones
 
-    public void llenarTabla(double xi) {
-        modeloTabla.setRowCount(0); // Limpia la tabla
+            // Llamada al método de Newton-Raphson para obtener la tabla de iteraciones
+            List<String[]> tabla = metodoNewton.newtonRaphsonTabla(funcion, xi, tolerancia, maxIteraciones);
 
-        for (int i = 1; i <= 10; i++) {
-            double nuevoXi = xi + i;
-            double resultadoFuncion = funcion.calcularResultadoFuncion(nuevoXi);
-            double resultadoDerivada = funcion.calcularResultadoDerivada(nuevoXi);
+            // Obtener el modelo de la tabla y llenarlo con los datos
+            DefaultTableModel model = (DefaultTableModel) vista.getTblTablaNewton().getModel();
+            model.setRowCount(0); // Limpiar la tabla
 
-            modeloTabla.addRow(new Object[]{i, nuevoXi, resultadoFuncion, resultadoDerivada});
+            // Llenar la tabla con los datos de Newton-Raphson
+            for (String[] fila : tabla) {
+                model.addRow(fila);
+            }
+
+            // Obtener la respuesta final (última fila de la tabla)
+            String[] ultimaFila = tabla.get(tabla.size() - 1);
+            String respuestaFinal = ultimaFila[4]; // El valor de Xr (raíz aproximada) está en la columna 4
+
+            // Mostrar la respuesta final en txtRecurrencia
+            vista.getTxtRecurrencia().setText(respuestaFinal);
+
+            JOptionPane.showMessageDialog(vista, "Método de Newton completado.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(vista, "Error: Formato de número inválido. Usa punto (.) como separador decimal.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "Error: " + e.getMessage());
         }
     }
 }
-
