@@ -32,6 +32,7 @@ public class VistaMetodoBairstow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnRegresar.setText("REGRESAR");

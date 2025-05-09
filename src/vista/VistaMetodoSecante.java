@@ -77,7 +77,7 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         txtXi_1 = new javax.swing.JTextField();
         txtXi = new javax.swing.JTextField();
         txtRecurrencia = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMetodoSecante = new javax.swing.JScrollPane();
         tblTablaSecante = new javax.swing.JTable();
         btnResolver = new javax.swing.JButton();
 
@@ -86,74 +86,94 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
+        btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
 
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 300, -1, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 80, 30));
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1150, -1));
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1150, -1));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("MÉTODO SECANTE");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
-        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 170, 20));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1150, -1));
 
-        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        funcion.setText("FUNCIÓN: ");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 100, -1));
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 127, 290, -1));
 
-        xi_1.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
+        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        funcion.setText("FUNCIÓN:");
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
+
+        xi_1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        xi_1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         xi_1.setText("Xi_1:");
-        fondoPanel.add(xi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 50, 20));
+        fondoPanel.add(xi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
 
-        xi.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
-        xi.setText("Xi : ");
-        fondoPanel.add(xi, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 30, 30));
+        xi.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        xi.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        xi.setText("Xi :");
+        fondoPanel.add(xi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
+        txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtFuncion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFuncionActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 170, -1));
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
 
+        txtXi_1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtXi_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtXi_1ActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtXi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 80, -1));
+        fondoPanel.add(txtXi_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
 
+        txtXi.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtXi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtXiActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 80, -1));
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
+        txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRecurrenciaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 190, 120, -1));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
         tblTablaSecante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,20 +183,23 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "i", "xi_1", "xi", "f(xi_1)", "f(xi)", "xr", "Tolerancia"
+                "i", "Xi_1", "Xi", "f(Xi_1)", "f(Xi)", "Xr", "Tolerancia"
             }
         ));
-        jScrollPane1.setViewportView(tblTablaSecante);
+        tblMetodoSecante.setViewportView(tblTablaSecante);
 
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 960, 310));
+        fondoPanel.add(tblMetodoSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 890, 300));
 
+        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
+        btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnResolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,9 +290,9 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel imagen;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JSeparator separador;
+    private javax.swing.JScrollPane tblMetodoSecante;
     private javax.swing.JTable tblTablaSecante;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtFuncion;

@@ -94,6 +94,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
         btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
@@ -104,6 +105,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -129,28 +131,31 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         funcion.setText("FUNCIÓN: ");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 110, -1));
+        funcion.setMaximumSize(new java.awt.Dimension(69, 17));
+        funcion.setMinimumSize(new java.awt.Dimension(69, 17));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
 
         intervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         intervaloA.setText("INTERVALO A:");
-        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 100, 20));
+        fondoPanel.add(intervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
 
         intervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         intervaloB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         intervaloB.setText("INTERVALO B:");
         intervaloB.setToolTipText("");
-        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 100, 30));
+        fondoPanel.add(intervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnResolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 80, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 30));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtFuncion.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +163,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 txtFuncionActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 240, -1));
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
 
         txtIntervaloA.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloA.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +171,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 txtIntervaloAActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 140, -1));
+        fondoPanel.add(txtIntervaloA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
 
         txtIntervaloB.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtIntervaloB.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +179,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 txtIntervaloBActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
+        fondoPanel.add(txtIntervaloB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
@@ -182,11 +187,11 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
                 txtRecurrenciaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 110, -1));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

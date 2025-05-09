@@ -31,6 +31,9 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +51,7 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -55,6 +59,15 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         });
         fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 610, 100, 30));
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 160, 20));
+
+        jButton1.setText("Ecuación 2 incognitas");
+        fondoPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+
+        jButton2.setText("Ecuación 3 incognitas");
+        fondoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+
+        jButton3.setText("Ecuación 4 incognitas");
+        fondoPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +128,9 @@ public class VistaEcuaciones extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     public javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

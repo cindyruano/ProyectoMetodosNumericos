@@ -112,22 +112,24 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, 90, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
 
         btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
         btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 250, 90, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 80, 30));
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
@@ -145,21 +147,24 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 127, 310, -1));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("FUNCIÓN:");
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Xi:");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("FUNCIÓN DERIVADA: ");
-        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+        jLabel3.setText("FUNCIÓN DERIVADA:");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("RECURRENCIA:");
-        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 110, -1));
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +172,7 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
                 txtRecurrenciaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 150, -1));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtFuncion.addActionListener(new java.awt.event.ActionListener() {
@@ -175,10 +180,10 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
                 txtFuncionActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 250, -1));
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
 
         txtXi.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 160, -1));
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
 
         txtFuncionDerivada.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtFuncionDerivada.addActionListener(new java.awt.event.ActionListener() {
@@ -186,7 +191,7 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
                 txtFuncionDerivadaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 160, -1));
+        fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
         jTable1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -202,17 +207,18 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         ));
         tblTablaNewton.setViewportView(jTable1);
 
-        fondoPanel.add(tblTablaNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 730, 320));
+        fondoPanel.add(tblTablaNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 890, 300));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnResolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 80, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

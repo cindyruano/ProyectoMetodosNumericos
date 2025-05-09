@@ -27,38 +27,137 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        btnRegresar = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
         btnInicio = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        btnResolver = new javax.swing.JButton();
+        tblMetodoMuller = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        funcion = new javax.swing.JLabel();
+        x0 = new javax.swing.JLabel();
+        x1 = new javax.swing.JLabel();
+        x2 = new javax.swing.JLabel();
+        recurencia = new javax.swing.JLabel();
+        txtFuncion = new javax.swing.JTextField();
+        txtX0 = new javax.swing.JTextField();
+        txtX1 = new javax.swing.JTextField();
+        txtX2 = new javax.swing.JTextField();
+        txtRecurrencia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setText("REGRESAR");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1150, -1));
 
+        titulo.setFont(new java.awt.Font("Gill Sans MT", 1, 24)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("MÉTODO MULLER");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1150, -1));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 127, 280, -1));
+
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, 80, 30));
+
+        btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 270, 80, 30));
+
+        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnResolver.setText("RESOLVER");
+        btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 235, 80, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "i", "x0", "x1", "x2", "f(x0)", "f(x1)", "f(x2)", "h0", "h1", "d0", "d1", "a", "b", "c", "x3", "Tolerancia"
+            }
+        ));
+        tblMetodoMuller.setViewportView(jTable1);
+
+        fondoPanel.add(tblMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 990, 270));
+
+        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        funcion.setText("FUNCIÓN:");
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
+
+        x0.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x0.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x0.setText("Xo:");
+        fondoPanel.add(x0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
+
+        x1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x1.setText("X1:");
+        fondoPanel.add(x1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
+
+        x2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x2.setText("X2:");
+        fondoPanel.add(x2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
+
+        recurencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        recurencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        recurencia.setText("RECURRENCIA:");
+        fondoPanel.add(recurencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+
+        txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
+
+        txtX0.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtX0, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
+
+        txtX1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtX1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
+
+        txtX2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 170, -1));
+
+        txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -114,6 +213,22 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel funcion;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel recurencia;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JScrollPane tblMetodoMuller;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtFuncion;
+    private javax.swing.JTextField txtRecurrencia;
+    private javax.swing.JTextField txtX0;
+    private javax.swing.JTextField txtX1;
+    private javax.swing.JTextField txtX2;
+    private javax.swing.JLabel x0;
+    private javax.swing.JLabel x1;
+    private javax.swing.JLabel x2;
     // End of variables declaration//GEN-END:variables
 }

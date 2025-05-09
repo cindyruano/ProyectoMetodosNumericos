@@ -63,6 +63,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         btnMetodoMuller.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoMuller.setText("MÉTODO MULLER");
         btnMetodoMuller.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoMuller.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoMuller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoMullerActionPerformed(evt);
@@ -73,6 +74,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         btnMetodoBairstow.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoBairstow.setText("MÉTODO BAIRSTOW");
         btnMetodoBairstow.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoBairstow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoBairstow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoBairstowActionPerformed(evt);
@@ -83,6 +85,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);

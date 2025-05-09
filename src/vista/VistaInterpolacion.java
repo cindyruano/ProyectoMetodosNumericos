@@ -29,26 +29,81 @@ public class VistaInterpolacion extends javax.swing.JFrame {
         fondoPanel = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        texto = new javax.swing.JLabel();
+        btnNewton = new javax.swing.JButton();
+        btnLagrange = new javax.swing.JButton();
+        separador = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondoPanel.setBackground(new java.awt.Color(192, 197, 196));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
+        btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, -1, -1));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 80, 30));
 
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, -1, -1));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 620, 80, 30));
+
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1150, -1));
+
+        titulo.setFont(new java.awt.Font("Gill Sans MT", 1, 24)); // NOI18N
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setText("MÉTODO INTERPOLACIÓN");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 1150, -1));
+
+        texto.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        texto.setText("Seleccione el tipo de método de Interpolación que desea realizar la función.");
+        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 1150, -1));
+
+        btnNewton.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btnNewton.setText("LINEAL de NEWTON");
+        btnNewton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnNewton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNewton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewtonActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 200, 50));
+
+        btnLagrange.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btnLagrange.setText("LINEAL de LAGRANGE");
+        btnLagrange.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnLagrange.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLagrange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLagrangeActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnLagrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 200, 50));
+
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 227, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,6 +130,18 @@ public class VistaInterpolacion extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewtonActionPerformed
+        VistaInterpolacionNewton va  = new VistaInterpolacionNewton();
+        va.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNewtonActionPerformed
+
+    private void btnLagrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLagrangeActionPerformed
+        VistaInterpolacionLagrange va  = new VistaInterpolacionLagrange();
+        va.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLagrangeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,7 +180,13 @@ public class VistaInterpolacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnLagrange;
+    private javax.swing.JButton btnNewton;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JLabel texto;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

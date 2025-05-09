@@ -66,6 +66,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnMetodoNewton.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoNewton.setText("MÉTODO de NEWTON");
         btnMetodoNewton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoNewton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoNewton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoNewtonActionPerformed(evt);
@@ -76,6 +77,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnMetodoSecante.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoSecante.setText("MÉTODO SECANTE");
         btnMetodoSecante.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoSecante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoSecante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoSecanteActionPerformed(evt);
@@ -86,6 +88,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnMetodoRaicesMultiples.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoRaicesMultiples.setText("MÉTODO RAICES MÚLTIPLES");
         btnMetodoRaicesMultiples.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoRaicesMultiples.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoRaicesMultiples.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoRaicesMultiplesActionPerformed(evt);
@@ -96,6 +99,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnMetodoPuntoFijo.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoPuntoFijo.setText("MÉTODO PUNTO FIJO");
         btnMetodoPuntoFijo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoPuntoFijo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMetodoPuntoFijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMetodoPuntoFijoActionPerformed(evt);
@@ -106,6 +110,8 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnInterpolacion.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnInterpolacion.setText("INTERPOLACIÓN");
         btnInterpolacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInterpolacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInterpolacion.setDefaultCapable(false);
         btnInterpolacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInterpolacionActionPerformed(evt);
@@ -116,6 +122,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
         btnRegresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
