@@ -27,20 +27,30 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        btnRegresar = new javax.swing.JButton();
+        imagen = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
         btnInicio = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        tblTablaRaicesMultiples = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setText("REGRESAR");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+        imagen.setText("jLabel2");
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, -1));
+
+        titulo.setText("MÉTODO RAICES MÚLTIPLES");
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, -1));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, -1));
 
         btnInicio.setText("INICIO");
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +60,47 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         });
         fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
 
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Xi", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblTablaRaicesMultiples.setViewportView(jTable1);
+
+        fondoPanel.add(tblTablaRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+
+        jLabel1.setText("FUNCIÓN:");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        jLabel2.setText("FUNCIÓN DERIVADA:");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+
+        jLabel3.setText("II FUNCIÓN DERIVADA:");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        fondoPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
+
+        jTextField2.setText("jTextField2");
+        fondoPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
+
+        jTextField3.setText("jTextField3");
+        fondoPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,7 +109,10 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -115,5 +169,16 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel imagen;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JSeparator separador;
+    private javax.swing.JScrollPane tblTablaRaicesMultiples;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

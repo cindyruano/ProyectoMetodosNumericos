@@ -26,7 +26,7 @@ public class VistaEcuaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        fondoPanel = new javax.swing.JPanel();
         imagen = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
@@ -34,16 +34,16 @@ public class VistaEcuaciones extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(157, 174, 202));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        jPanel1.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("SISTEMA ECUACIONES DE 2, 3 y 4 INCOGNITAS");
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -53,18 +53,18 @@ public class VistaEcuaciones extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 610, 100, 30));
-        jPanel1.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 160, 20));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 610, 100, 30));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 160, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
 
         pack();
@@ -113,8 +113,8 @@ public class VistaEcuaciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    public javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
