@@ -33,6 +33,8 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         separador = new javax.swing.JSeparator();
         btnMetodoMuller = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
+        btnMetodoBairtow = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +53,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         pregunta.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         pregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pregunta.setText("Seleccione el tipo de raíces de polinomios a realizar.");
-        fondoPanel.add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1160, -1));
+        fondoPanel.add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1150, -1));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,7 +70,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
                 btnMetodoMullerActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 230, 40));
+        fondoPanel.add(btnMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 230, 40));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -79,13 +81,33 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 610, 110, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 80, 30));
+
+        btnMetodoBairtow.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btnMetodoBairtow.setText("MÉTODO BAIRTOW");
+        btnMetodoBairtow.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnMetodoBairtow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetodoBairtowActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnMetodoBairtow, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 230, 40));
+
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 620, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +128,18 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMetodoMullerActionPerformed
+
+    private void btnMetodoBairtowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodoBairtowActionPerformed
+        VistaMetodoBairtow vi = new VistaMetodoBairtow();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMetodoBairtowActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        VistaInicio vi = new VistaInicio();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +178,8 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnMetodoBairtow;
     private javax.swing.JButton btnMetodoMuller;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel fondoPanel;

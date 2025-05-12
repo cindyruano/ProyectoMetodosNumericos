@@ -36,19 +36,22 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         btn2Incognitas = new javax.swing.JButton();
         btn3Incognitas = new javax.swing.JButton();
         btn4Incognitas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnInicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
+        fondoPanel.setBackground(new java.awt.Color(192, 197, 196));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 200.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1150, -1));
 
         titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("SISTEMA ECUACIONES DE 2, 3 y 4 INCOGNITAS");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1150, -1));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -59,33 +62,64 @@ public class VistaEcuaciones extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 610, 100, 30));
-        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 160, 20));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 80, 30));
 
-        btn2Incognitas.setText("Ecuación 2 incognitas");
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
+        separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        separador.setOpaque(true);
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 650, -1));
+
+        btn2Incognitas.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btn2Incognitas.setText("DOS INCOGNITAS");
+        btn2Incognitas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn2Incognitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2IncognitasActionPerformed(evt);
             }
         });
-        fondoPanel.add(btn2Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+        fondoPanel.add(btn2Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 230, 40));
 
-        btn3Incognitas.setText("Ecuación 3 incognitas");
+        btn3Incognitas.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btn3Incognitas.setText("TRES INCOGNITAS");
+        btn3Incognitas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn3Incognitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3IncognitasActionPerformed(evt);
             }
         });
-        fondoPanel.add(btn3Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+        fondoPanel.add(btn3Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 230, 40));
 
-        btn4Incognitas.setText("Ecuación 4 incognitas");
-        fondoPanel.add(btn4Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
+        btn4Incognitas.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        btn4Incognitas.setText("CUATRO INCOGNITAS");
+        btn4Incognitas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn4Incognitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4IncognitasActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btn4Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 230, 40));
+
+        jLabel1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Seleccione el tipo de raíces de polinomios a realizar.");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1150, -1));
+
+        btnInicio.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnInicio.setText("INICIO");
+        btnInicio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 620, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +137,6 @@ public class VistaEcuaciones extends javax.swing.JFrame {
 
     private void btn3IncognitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3IncognitasActionPerformed
         VistaTresIncognitas vista = new VistaTresIncognitas();
-//        ControladorTresIncognitas controlador = new ControladorTresIncognitas(vista);
         vista.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn3IncognitasActionPerformed
@@ -113,6 +146,18 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn2IncognitasActionPerformed
+
+    private void btn4IncognitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4IncognitasActionPerformed
+        VistaCuatroIncognitas vi = new VistaCuatroIncognitas();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn4IncognitasActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        VistaInicio vi = new VistaInicio();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,9 +198,11 @@ public class VistaEcuaciones extends javax.swing.JFrame {
     private javax.swing.JButton btn2Incognitas;
     private javax.swing.JButton btn3Incognitas;
     private javax.swing.JButton btn4Incognitas;
+    private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     public javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

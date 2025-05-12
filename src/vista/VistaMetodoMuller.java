@@ -29,17 +29,17 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         fondoPanel = new javax.swing.JPanel();
         imagen = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
+        funcion = new javax.swing.JLabel();
+        x0 = new javax.swing.JLabel();
+        x1 = new javax.swing.JLabel();
+        x2 = new javax.swing.JLabel();
+        recurencia = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         btnInicio = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnResolver = new javax.swing.JButton();
         tblMetodoMuller = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        funcion = new javax.swing.JLabel();
-        x0 = new javax.swing.JLabel();
-        x1 = new javax.swing.JLabel();
-        x2 = new javax.swing.JLabel();
-        recurencia = new javax.swing.JLabel();
         txtFuncion = new javax.swing.JTextField();
         txtX0 = new javax.swing.JTextField();
         txtX1 = new javax.swing.JTextField();
@@ -59,6 +59,31 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("MÉTODO MULLER");
         fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1150, -1));
+
+        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        funcion.setText("FUNCIÓN:");
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
+
+        x0.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x0.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x0.setText("Xo:");
+        fondoPanel.add(x0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
+
+        x1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x1.setText("X1:");
+        fondoPanel.add(x1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
+
+        x2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        x2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        x2.setText("X2:");
+        fondoPanel.add(x2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
+
+        recurencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        recurencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        recurencia.setText("RECURRENCIA:");
+        fondoPanel.add(recurencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,31 +133,6 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         tblMetodoMuller.setViewportView(jTable1);
 
         fondoPanel.add(tblMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 990, 270));
-
-        funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        funcion.setText("FUNCIÓN:");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
-
-        x0.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        x0.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        x0.setText("Xo:");
-        fondoPanel.add(x0, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
-
-        x1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        x1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        x1.setText("X1:");
-        fondoPanel.add(x1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
-
-        x2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        x2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        x2.setText("X2:");
-        fondoPanel.add(x2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
-
-        recurencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        recurencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        recurencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));

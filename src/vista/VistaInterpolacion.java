@@ -64,18 +64,18 @@ public class VistaInterpolacion extends javax.swing.JFrame {
         fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 620, 80, 30));
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 90.png"))); // NOI18N
-        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1150, -1));
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen 200.png"))); // NOI18N
+        fondoPanel.add(imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1150, -1));
 
         titulo.setFont(new java.awt.Font("Gill Sans MT", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("MÉTODO INTERPOLACIÓN");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 1150, -1));
+        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1150, -1));
 
         texto.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texto.setText("Seleccione el tipo de método de Interpolación que desea realizar la función.");
-        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 1150, -1));
+        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1150, -1));
 
         btnNewton.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnNewton.setText("LINEAL de NEWTON");
@@ -86,7 +86,7 @@ public class VistaInterpolacion extends javax.swing.JFrame {
                 btnNewtonActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 200, 50));
+        fondoPanel.add(btnNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 230, 40));
 
         btnLagrange.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnLagrange.setText("LINEAL de LAGRANGE");
@@ -97,19 +97,19 @@ public class VistaInterpolacion extends javax.swing.JFrame {
                 btnLagrangeActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnLagrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 200, 50));
+        fondoPanel.add(btnLagrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 230, 40));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
         separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         separador.setOpaque(true);
-        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 227, 390, -1));
+        fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
