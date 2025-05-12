@@ -1,5 +1,7 @@
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
@@ -31,9 +33,9 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         separador = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn2Incognitas = new javax.swing.JButton();
+        btn3Incognitas = new javax.swing.JButton();
+        btn4Incognitas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,14 +62,24 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 610, 100, 30));
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 160, 20));
 
-        jButton1.setText("Ecuación 2 incognitas");
-        fondoPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
+        btn2Incognitas.setText("Ecuación 2 incognitas");
+        btn2Incognitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2IncognitasActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btn2Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
-        jButton2.setText("Ecuación 3 incognitas");
-        fondoPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+        btn3Incognitas.setText("Ecuación 3 incognitas");
+        btn3Incognitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3IncognitasActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btn3Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
 
-        jButton3.setText("Ecuación 4 incognitas");
-        fondoPanel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
+        btn4Incognitas.setText("Ecuación 4 incognitas");
+        fondoPanel.add(btn4Incognitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,6 +100,19 @@ public class VistaEcuaciones extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btn3IncognitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3IncognitasActionPerformed
+        VistaTresIncognitas vista = new VistaTresIncognitas();
+//        ControladorTresIncognitas controlador = new ControladorTresIncognitas(vista);
+        vista.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn3IncognitasActionPerformed
+
+    private void btn2IncognitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2IncognitasActionPerformed
+        VistaDosIncognitas vi = new VistaDosIncognitas();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn2IncognitasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,12 +150,12 @@ public class VistaEcuaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn2Incognitas;
+    private javax.swing.JButton btn3Incognitas;
+    private javax.swing.JButton btn4Incognitas;
     private javax.swing.JButton btnRegresar;
     public javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JSeparator separador;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables

@@ -34,7 +34,6 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         btnMetodoNewton = new javax.swing.JButton();
         btnMetodoSecante = new javax.swing.JButton();
         btnMetodoRaicesMultiples = new javax.swing.JButton();
-        btnMetodoPuntoFijo = new javax.swing.JButton();
         btnInterpolacion = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
 
@@ -72,7 +71,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
                 btnMetodoNewtonActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMetodoNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 240, 40));
+        fondoPanel.add(btnMetodoNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 270, 40));
 
         btnMetodoSecante.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoSecante.setText("MÉTODO SECANTE");
@@ -83,7 +82,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
                 btnMetodoSecanteActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMetodoSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 230, 40));
+        fondoPanel.add(btnMetodoSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 270, 40));
 
         btnMetodoRaicesMultiples.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnMetodoRaicesMultiples.setText("MÉTODO RAICES MÚLTIPLES");
@@ -94,18 +93,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
                 btnMetodoRaicesMultiplesActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMetodoRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 270, 40));
-
-        btnMetodoPuntoFijo.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        btnMetodoPuntoFijo.setText("MÉTODO PUNTO FIJO");
-        btnMetodoPuntoFijo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnMetodoPuntoFijo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMetodoPuntoFijo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMetodoPuntoFijoActionPerformed(evt);
-            }
-        });
-        fondoPanel.add(btnMetodoPuntoFijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 270, 40));
+        fondoPanel.add(btnMetodoRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 270, 40));
 
         btnInterpolacion.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         btnInterpolacion.setText("INTERPOLACIÓN");
@@ -117,7 +105,7 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
                 btnInterpolacionActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInterpolacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 240, 40));
+        fondoPanel.add(btnInterpolacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 270, 40));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -168,12 +156,6 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnInterpolacionActionPerformed
 
-    private void btnMetodoPuntoFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodoPuntoFijoActionPerformed
-        VistaMetodoPuntoFijo  vi  = new VistaMetodoPuntoFijo();
-        vi.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnMetodoPuntoFijoActionPerformed
-
     private void btnMetodoRaicesMultiplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodoRaicesMultiplesActionPerformed
         VistaMetodoRaicesMultiples  vi  = new VistaMetodoRaicesMultiples();
         vi.setVisible(true);
@@ -218,7 +200,6 @@ public class VistaMetodoAbierto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInterpolacion;
     private javax.swing.JButton btnMetodoNewton;
-    private javax.swing.JButton btnMetodoPuntoFijo;
     private javax.swing.JButton btnMetodoRaicesMultiples;
     private javax.swing.JButton btnMetodoSecante;
     private javax.swing.JButton btnRegresar;

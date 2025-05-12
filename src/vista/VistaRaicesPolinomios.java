@@ -32,7 +32,6 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         pregunta = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         btnMetodoMuller = new javax.swing.JButton();
-        btnMetodoBairstow = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,18 +68,7 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
                 btnMetodoMullerActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 230, 40));
-
-        btnMetodoBairstow.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        btnMetodoBairstow.setText("MÉTODO BAIRSTOW");
-        btnMetodoBairstow.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnMetodoBairstow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMetodoBairstow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMetodoBairstowActionPerformed(evt);
-            }
-        });
-        fondoPanel.add(btnMetodoBairstow, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 390, 230, 40));
+        fondoPanel.add(btnMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 230, 40));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -119,12 +107,6 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnMetodoMullerActionPerformed
 
-    private void btnMetodoBairstowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodoBairstowActionPerformed
-        VistaMetodoBairstow vi = new VistaMetodoBairstow();
-        vi.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnMetodoBairstowActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -162,7 +144,6 @@ public class VistaRaicesPolinomios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMetodoBairstow;
     private javax.swing.JButton btnMetodoMuller;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel fondoPanel;

@@ -4,19 +4,21 @@
  */
 package vista;
 
+
 /**
  *
  * @author cindy
  */
+
 public class VistaDosIncognitas extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form VistaDosIncognitas
      */
-    public VistaDosIncognitas() {
-        initComponents();
-    }
 
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,57 +28,151 @@ public class VistaDosIncognitas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondoPanel = new javax.swing.JPanel();
+        btnResolver = new javax.swing.JButton();
+        txtEcuacionUno = new javax.swing.JTextField();
+        txtEcuacionDos = new javax.swing.JTextField();
+        txtResultadoX = new javax.swing.JTextField();
+        txtResultadoY = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnResolver.setText("RESOLVER");
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, -1, -1));
+
+        txtEcuacionUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEcuacionUnoActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtEcuacionUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 70, -1));
+        fondoPanel.add(txtEcuacionDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 100, -1));
+        fondoPanel.add(txtResultadoX, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 170, -1));
+        fondoPanel.add(txtResultadoY, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 130, -1));
+
+        jLabel1.setText("jLabel1");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
+
+        jLabel2.setText("jLabel2");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
+
+        jLabel3.setText("jLabel3");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
+
+        jLabel4.setText("jLabel4");
+        fondoPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        fondoPanel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
+
+        jTextField2.setText("jTextField2");
+        fondoPanel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+
+        jTextField3.setText("jTextField3");
+        fondoPanel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
+
+        jTextField4.setText("jTextField4");
+        fondoPanel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, -1, -1));
+
+        jTextField5.setText("jTextField5");
+        fondoPanel.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
+
+        jTextField6.setText("jTextField6");
+        fondoPanel.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+        fondoPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 20, 180));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+//        controlador.resolverDosIncognitas();
+    }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void txtEcuacionUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEcuacionUnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEcuacionUnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaDosIncognitas().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(VistaDosIncognitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new VistaDosIncognitas().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnResolver;
+    private javax.swing.JPanel fondoPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    public javax.swing.JTextField txtEcuacionDos;
+    public javax.swing.JTextField txtEcuacionUno;
+    public javax.swing.JTextField txtResultadoX;
+    private javax.swing.JTextField txtResultadoY;
     // End of variables declaration//GEN-END:variables
 }
