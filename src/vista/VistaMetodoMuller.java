@@ -1,12 +1,18 @@
 package vista;
 
+import controladores.ControladorMuller;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author cindy
  */
 public class VistaMetodoMuller extends javax.swing.JFrame {
+
+    ControladorMuller controlador = new ControladorMuller(this);
 
     /**
      * Creates new form VistaMetodoMuller
@@ -15,6 +21,43 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+    }
+
+    // Métodos getters para los componentes
+    public JButton getBtnInicio() {
+        return btnInicio;
+    }
+
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
+    public JButton getBtnResolver() {
+        return btnResolver;
+    }
+
+    public JTable getTableResultados() {
+        return jTable1;
+    }
+
+    public JTextField getTxtFuncion() {
+        return txtFuncion;
+    }
+
+    public JTextField getTxtRecurrencia() {
+        return txtRecurrencia;
+    }
+
+    public JTextField getTxtX0() {
+        return txtX0;
+    }
+
+    public JTextField getTxtX1() {
+        return txtX1;
+    }
+
+    public JTextField getTxtX2() {
+        return txtX2;
     }
 
     /**
@@ -117,6 +160,11 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 235, 80, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -135,18 +183,43 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         fondoPanel.add(tblMetodoMuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 990, 270));
 
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtFuncion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFuncionActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
 
         txtX0.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtX0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtX0ActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtX0, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
 
         txtX1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtX1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtX1ActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtX1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
         txtX2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtX2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtX2ActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 170, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtRecurrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRecurrenciaActionPerformed(evt);
+            }
+        });
         fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,6 +247,31 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         vi.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void txtFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFuncionActionPerformed
+
+    private void txtX0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtX0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtX0ActionPerformed
+
+    private void txtX1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtX1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtX1ActionPerformed
+
+    private void txtX2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtX2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtX2ActionPerformed
+
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        // TODO add your handling code here:
+        controlador.resolverMetodoMuller();
+    }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void txtRecurrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRecurrenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRecurrenciaActionPerformed
 
     /**
      * @param args the command line arguments
