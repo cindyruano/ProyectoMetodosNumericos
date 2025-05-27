@@ -79,8 +79,8 @@ public class VistaInterpolacionNewton extends javax.swing.JFrame {
 
         texto.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        texto.setText("Escriba los valores de la \"X\" y \"Y\" utilizando \",\"");
-        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 1150, -1));
+        texto.setText("Escriba los valores de \"X\" y \"Y\"");
+        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 410, -1));
 
         resultado.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         resultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

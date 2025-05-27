@@ -86,8 +86,8 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
 
         texto.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        texto.setText("Escriba los valores de la \"X\" y \"Y\" utilizando \",\"");
-        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 1150, -1));
+        texto.setText("Escriba los valores de \"X\" y \"Y\"");
+        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 340, 20));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
