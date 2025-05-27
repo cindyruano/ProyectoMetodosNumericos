@@ -185,8 +185,8 @@
                     <Column editable="true" title="i" type="java.lang.Object"/>
                     <Column editable="true" title="Xi" type="java.lang.Object"/>
                     <Column editable="true" title="f(Xi)" type="java.lang.Object"/>
-                    <Column editable="true" title="f&apos;(x)" type="java.lang.Object"/>
-                    <Column editable="true" title="f&apos;&apos;(x)" type="java.lang.Object"/>
+                    <Column editable="true" title="f&apos;(Xi)" type="java.lang.Object"/>
+                    <Column editable="true" title="f&apos;&apos;(Xi)" type="java.lang.Object"/>
                     <Column editable="true" title="Xr" type="java.lang.Object"/>
                     <Column editable="true" title="Tolerancia" type="java.lang.Object"/>
                   </Table>

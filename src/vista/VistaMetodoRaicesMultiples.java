@@ -100,7 +100,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "i", "Xi", "f(Xi)", "f'(x)", "f''(x)", "Xr", "Tolerancia"
+                "i", "Xi", "f(Xi)", "f'(Xi)", "f''(Xi)", "Xr", "Tolerancia"
             }
         ));
         tblTablaRaicesMultiples.setViewportView(jTable1);

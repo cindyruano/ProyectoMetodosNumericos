@@ -4,12 +4,11 @@
  */
 package vista;
 
-import javax.swing.JFrame;
-import modelos.ModeloLagrange;
-import controladores.ControladorLagrange;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,24 +19,10 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
     /**
      * Creates new form VistaInterpolacionLagrange
      */
-    DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<ModeloLagrange> datos = new ArrayList<ModeloLagrange>();
-
     public VistaInterpolacionLagrange() {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-//        ModeloLagrange modelo = new ModeloLagrange();
-
-        modelo.addColumn("No.");
-        modelo.addColumn("X");
-        modelo.addColumn("Y");
-
-        refrescarTabla();
-
-    
-
-    ////        ControladorLagrange controlador = new ControladorLagrange(this, modelo);
     }
 
     /**
@@ -61,9 +46,19 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         btnResolver = new javax.swing.JButton();
-        scroll = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
-        btnGenerar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtX1 = new javax.swing.JTextField();
+        txtY1 = new javax.swing.JTextField();
+        txtX2 = new javax.swing.JTextField();
+        txtY2 = new javax.swing.JTextField();
+        txtX3 = new javax.swing.JTextField();
+        txtY3 = new javax.swing.JTextField();
+        txtX4 = new javax.swing.JTextField();
+        txtY4 = new javax.swing.JTextField();
+        txtX5 = new javax.swing.JTextField();
+        txtY5 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,17 +77,17 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
 
         fX.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         fX.setText("f(x):");
-        fondoPanel.add(fX, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 30, -1));
+        fondoPanel.add(fX, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 405, 30, -1));
 
         x.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         x.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         x.setText("VALOR DE X:");
-        fondoPanel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 130, -1));
+        fondoPanel.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 110, -1));
 
         texto.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texto.setText("Escriba los valores de la \"X\" y \"Y\" utilizando \",\"");
-        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 1150, -1));
+        fondoPanel.add(texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 1150, -1));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,10 +96,10 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 157, 690, -1));
 
         txtX.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        fondoPanel.add(txtX, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 120, -1));
+        fondoPanel.add(txtX, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 160, -1));
 
         txtResultado.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        fondoPanel.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 250, -1));
+        fondoPanel.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 405, 180, -1));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -135,40 +130,55 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 220, 80, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 80, 30));
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "No.", "X", "Y"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Byte.class, java.lang.Short.class, java.lang.Short.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        scroll.setViewportView(tblDatos);
-
-        fondoPanel.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 310, 190));
-
-        btnGenerar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
-        btnGenerar.setText("GENERAR");
-        btnGenerar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerarActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 80, 30));
+        fondoPanel.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 80, 30));
+
+        jLabel1.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel1.setText("X");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Gill Sans MT", 1, 18)); // NOI18N
+        jLabel2.setText("Y");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, -1, -1));
+
+        txtX1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtX1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 60, -1));
+
+        txtY1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtY1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 60, -1));
+
+        txtX2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 60, -1));
+
+        txtY2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtY2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 60, -1));
+
+        txtX3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtX3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 60, -1));
+
+        txtY3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtY3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 60, -1));
+
+        txtX4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtX4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 60, -1));
+
+        txtY4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtY4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 60, -1));
+
+        txtX5.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtX5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 60, -1));
+
+        txtY5.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        fondoPanel.add(txtY5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,7 +195,80 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            double x = Double.parseDouble(txtX.getText());
+
+            // Leer valores ingresados en X
+            JTextField[] xFields = {txtX1, txtX2, txtX3, txtX4, txtX5};
+            JTextField[] fxFields = {txtY1, txtY2, txtY3, txtY4, txtY5};
+
+            List<Double> X = new ArrayList<>();
+            List<Double> fX = new ArrayList<>();
+
+            for (int i = 0; i < 5; i++) {
+                String xText = xFields[i].getText().trim();
+                String fxText = fxFields[i].getText().trim();
+
+                if (!xText.isEmpty() && !fxText.isEmpty()) {
+                    X.add(Double.parseDouble(xText));
+                    fX.add(Double.parseDouble(fxText));
+                }
+            }
+
+            if (X.size() < 2) {
+                JOptionPane.showMessageDialog(this, "Debes ingresar al menos 2 valores en X y f(X).");
+                return;
+            }
+
+            double resultado = 0;
+            boolean encontrado = false;
+
+            if (X.size() == 2) {
+                // Solo 2 puntos: usar fórmula simétrica
+                double X0 = X.get(0);
+                double X1 = X.get(1);
+                double fX0 = fX.get(0);
+                double fX1 = fX.get(1);
+
+                if (X0 == X1) {
+                    JOptionPane.showMessageDialog(this, "X0 y X1 no pueden ser iguales.");
+                    return;
+                }
+
+                resultado = ((x - X1) / (X0 - X1)) * fX0 + ((x - X0) / (X1 - X0)) * fX1;
+                encontrado = true;
+
+            } else {
+                // Más de 2 puntos: interpolación por tramos
+                for (int i = 0; i < X.size() - 1; i++) {
+                    double Xi = X.get(i);
+                    double Xi1 = X.get(i + 1);
+                    double fXi = fX.get(i);
+                    double fXi1 = fX.get(i + 1);
+
+                    if ((x >= Xi && x <= Xi1) || (x >= Xi1 && x <= Xi)) {
+                        if (Xi == Xi1) {
+                            JOptionPane.showMessageDialog(this, "X[" + i + "] y X[" + (i + 1) + "] no pueden ser iguales.");
+                            return;
+                        }
+
+                        resultado = ((x - Xi1) / (Xi - Xi1)) * fXi + ((x - Xi) / (Xi1 - Xi)) * fXi1;
+                        encontrado = true;
+                        break;
+                    }
+                }
+            }
+
+            if (encontrado) {
+                txtResultado.setText(String.format("%.2f", resultado)); 
+            } else {
+                JOptionPane.showMessageDialog(this, "x está fuera del rango de los valores ingresados.");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar todos los valores respectivos.");
+        }
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -200,40 +283,22 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
-        try {
-            ModeloLagrange modeloLagrange = new ModeloLagrange();
-            modeloLagrange.setNum(txtX.getText());
-            modeloLagrange.setValorX(txtX.getText());
-            modeloLagrange.setResultado(txtResultado.getText());
-            modeloLagrange.setValorInicio(txtX.getText());
-            modeloLagrange.setValorY(txtX.getText());
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtX1.setText("");
+        txtX2.setText("");
+        txtX3.setText("");
+        txtX4.setText("");
+        txtX5.setText("");
 
-            datos.add(modeloLagrange);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al agregar el valor X");
-        }
+        txtY1.setText("");
+        txtY2.setText("");
+        txtY3.setText("");
+        txtY4.setText("");
+        txtY5.setText("");
 
-    }//GEN-LAST:event_btnGenerarActionPerformed
-
-    public void refrescarTabla() {
-
-        //Borra elementos
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-        for (ModeloLagrange lagrange : datos) {
-            Object a[] = new Object[5];
-            a[0]= lagrange.getNum();
-            a[1]= lagrange.getResultado();
-            a[2]= lagrange.getValorInicio();
-            a[3]= lagrange.getValorX();
-            a[4]= lagrange.getValorY();
-            modelo.addRow(a);
-
-        }
-        tblDatos.setModel(modelo);
-    }
+        txtX.setText("");
+        txtResultado.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,20 +336,30 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnInicio;
+    public javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRegresar;
     public javax.swing.JButton btnResolver;
     private javax.swing.JLabel fX;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel imagen;
-    private javax.swing.JScrollPane scroll;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator separador;
-    public javax.swing.JTable tblDatos;
     private javax.swing.JLabel texto;
     private javax.swing.JLabel titulo;
     public javax.swing.JTextField txtResultado;
     public javax.swing.JTextField txtX;
+    private javax.swing.JTextField txtX1;
+    private javax.swing.JTextField txtX2;
+    private javax.swing.JTextField txtX3;
+    private javax.swing.JTextField txtX4;
+    private javax.swing.JTextField txtX5;
+    private javax.swing.JTextField txtY1;
+    private javax.swing.JTextField txtY2;
+    private javax.swing.JTextField txtY3;
+    private javax.swing.JTextField txtY4;
+    private javax.swing.JTextField txtY5;
     private javax.swing.JLabel x;
     // End of variables declaration//GEN-END:variables
 }

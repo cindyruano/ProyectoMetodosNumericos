@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -231,35 +232,46 @@ public class VistaDosIncognitas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtx1ActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        float X1 = Float.parseFloat(txtx1.getText());
-        float X2 = Float.parseFloat(txtx2.getText());
 
-        float Y1 = Float.parseFloat(txty1.getText());
-        float Y2 = Float.parseFloat(txty2.getText());
+        if (txtx1.getText().trim().isEmpty() || txtx2.getText().trim().isEmpty()
+                || txty1.getText().trim().isEmpty() || txty2.getText().trim().isEmpty()
+                || txtti1.getText().trim().isEmpty() || txtti2.getText().trim().isEmpty()) {
 
-        float TI1 = Float.parseFloat(txtti1.getText());
-        float TI2 = Float.parseFloat(txtti2.getText());
-
-        //termino independiente = detA
-        float detA = X1 * Y2 - X2 * Y1;
-
-        if (detA == 0) {
-            txtResultadoX.setText("Sin solución");
-            txtResultadoY.setText("Sin solución");
+            JOptionPane.showMessageDialog(this, "Debe ingresar todos los valores respectivos.");
             return;
         }
 
-        float detAX = TI1 * Y2 - TI2 * Y1;
-        float detAY = X1 * TI2 - X2 * TI1;
+        try {
+            float X1 = Float.parseFloat(txtx1.getText());
+            float X2 = Float.parseFloat(txtx2.getText());
 
-        float x = detAX / detA;
-        float y = detAY / detA;
+            float Y1 = Float.parseFloat(txty1.getText());
+            float Y2 = Float.parseFloat(txty2.getText());
 
-        String respuestaX = "" + x;
-        txtResultadoX.setText(respuestaX);
+            float TI1 = Float.parseFloat(txtti1.getText());
+            float TI2 = Float.parseFloat(txtti2.getText());
 
-        String respuestaY = "" + y;
-        txtResultadoY.setText(respuestaY);
+            // Cálculo del determinante principal
+            float detA = X1 * Y2 - X2 * Y1;
+
+            if (detA == 0) {
+                txtResultadoX.setText("Sin solución");
+                txtResultadoY.setText("Sin solución");
+                return;
+            }
+
+            float detAX = TI1 * Y2 - TI2 * Y1;
+            float detAY = X1 * TI2 - X2 * TI1;
+
+            float x = detAX / detA;
+            float y = detAY / detA;
+
+            txtResultadoX.setText(String.format("%.2f", x));
+            txtResultadoY.setText(String.format("%.2f", y));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar solo números válidos.");
+        }
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed

@@ -5,6 +5,8 @@
 package vista;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,31 +23,39 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    // Método auxiliar para calcular el determinante de una matriz 4x4
-    private float calcularDeterminante4x4(
-            float a11, float a12, float a13, float a14,
-            float a21, float a22, float a23, float a24,
-            float a31, float a32, float a33, float a34,
-            float a41, float a42, float a43, float a44) {
-
-        // Cálculo por cofactores, expandiendo por la primera fila
-        float det
-                = a11 * calcularDeterminante3x3(a22, a23, a24, a32, a33, a34, a42, a43, a44)
-                - a12 * calcularDeterminante3x3(a21, a23, a24, a31, a33, a34, a41, a43, a44)
-                + a13 * calcularDeterminante3x3(a21, a22, a24, a31, a32, a34, a41, a42, a44)
-                - a14 * calcularDeterminante3x3(a21, a22, a23, a31, a32, a33, a41, a42, a43);
-        return det;
+    // Método para calcular determinante de matriz 4x4
+    private double determinante4x4(double[][] m) {
+        return m[0][0] * determinante3x3(m[1][1], m[1][2], m[1][3],
+                m[2][1], m[2][2], m[2][3],
+                m[3][1], m[3][2], m[3][3])
+                - m[0][1] * determinante3x3(m[1][0], m[1][2], m[1][3],
+                        m[2][0], m[2][2], m[2][3],
+                        m[3][0], m[3][2], m[3][3])
+                + m[0][2] * determinante3x3(m[1][0], m[1][1], m[1][3],
+                        m[2][0], m[2][1], m[2][3],
+                        m[3][0], m[3][1], m[3][3])
+                - m[0][3] * determinante3x3(m[1][0], m[1][1], m[1][2],
+                        m[2][0], m[2][1], m[2][2],
+                        m[3][0], m[3][1], m[3][2]);
     }
 
-    // Método auxiliar para calcular el determinante de una matriz 3x3
-    private float calcularDeterminante3x3(
-            float a11, float a12, float a13,
-            float a21, float a22, float a23,
-            float a31, float a32, float a33) {
-
+// Método para calcular determinante de matriz 3x3
+    private double determinante3x3(double a11, double a12, double a13,
+            double a21, double a22, double a23,
+            double a31, double a32, double a33) {
         return a11 * (a22 * a33 - a23 * a32)
                 - a12 * (a21 * a33 - a23 * a31)
                 + a13 * (a21 * a32 - a22 * a31);
+    }
+
+// Método para reemplazar la columna 'col' de una matriz 4x4 con un vector columna de 4 elementos
+    private double[][] reemplazarColumna(double[][] matriz, double[] columna, int col) {
+        double[][] nueva = new double[4][4];
+        for (int i = 0; i < 4; i++) {
+            System.arraycopy(matriz[i], 0, nueva[i], 0, 4);
+            nueva[i][col] = columna[i];
+        }
+        return nueva;
     }
 
     /**
@@ -62,26 +72,26 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        txtx1 = new javax.swing.JTextField();
-        txtx2 = new javax.swing.JTextField();
-        txtx3 = new javax.swing.JTextField();
-        txtx4 = new javax.swing.JTextField();
-        txty1 = new javax.swing.JTextField();
-        txtz1 = new javax.swing.JTextField();
-        txtu1 = new javax.swing.JTextField();
-        txty2 = new javax.swing.JTextField();
-        txtz2 = new javax.swing.JTextField();
-        txtu2 = new javax.swing.JTextField();
-        txty3 = new javax.swing.JTextField();
-        txtz3 = new javax.swing.JTextField();
-        txtu3 = new javax.swing.JTextField();
-        txty4 = new javax.swing.JTextField();
-        txtz4 = new javax.swing.JTextField();
-        txtu4 = new javax.swing.JTextField();
-        txtti1 = new javax.swing.JTextField();
-        txtti2 = new javax.swing.JTextField();
-        txtti3 = new javax.swing.JTextField();
-        txtti4 = new javax.swing.JTextField();
+        txtX2 = new javax.swing.JTextField();
+        txtX1 = new javax.swing.JTextField();
+        txtX3 = new javax.swing.JTextField();
+        txtX4 = new javax.swing.JTextField();
+        txtY1 = new javax.swing.JTextField();
+        txtZ1 = new javax.swing.JTextField();
+        txtU1 = new javax.swing.JTextField();
+        txtY2 = new javax.swing.JTextField();
+        txtZ2 = new javax.swing.JTextField();
+        txtU2 = new javax.swing.JTextField();
+        txtY3 = new javax.swing.JTextField();
+        txtZ3 = new javax.swing.JTextField();
+        txtU3 = new javax.swing.JTextField();
+        txtY4 = new javax.swing.JTextField();
+        txtZ4 = new javax.swing.JTextField();
+        txtU4 = new javax.swing.JTextField();
+        txtTI1 = new javax.swing.JTextField();
+        txtTI2 = new javax.swing.JTextField();
+        txtTI3 = new javax.swing.JTextField();
+        txtTI4 = new javax.swing.JTextField();
         btnResolver = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -122,96 +132,96 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
         jLabel3.setText("FUNCIÓN:");
         fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
-        txtx1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtx1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtx1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 70, -1));
+        txtX2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtX2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtX2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 70, -1));
 
-        txtx2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtx2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtx2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 70, -1));
+        txtX1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtX1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtX1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 70, -1));
 
-        txtx3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtx3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtx3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 70, -1));
+        txtX3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtX3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtX3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 70, -1));
 
-        txtx4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtx4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtx4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 70, -1));
+        txtX4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtX4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtX4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 70, -1));
 
-        txty1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txty1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txty1.setToolTipText("");
-        fondoPanel.add(txty1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 70, -1));
+        txtY1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtY1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtY1.setToolTipText("");
+        fondoPanel.add(txtY1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 70, -1));
 
-        txtz1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtz1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtz1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 70, -1));
+        txtZ1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtZ1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtZ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 70, -1));
 
-        txtu1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtu1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 70, -1));
+        txtU1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtU1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 70, -1));
 
-        txty2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txty2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txty2.addActionListener(new java.awt.event.ActionListener() {
+        txtY2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtY2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtY2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txty2ActionPerformed(evt);
+                txtY2ActionPerformed(evt);
             }
         });
-        fondoPanel.add(txty2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 70, -1));
+        fondoPanel.add(txtY2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 70, -1));
 
-        txtz2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtz2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtz2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 70, -1));
+        txtZ2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtZ2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtZ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 70, -1));
 
-        txtu2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtu2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 70, -1));
+        txtU2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtU2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtU2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 70, -1));
 
-        txty3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txty3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txty3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 70, -1));
+        txtY3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtY3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtY3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 70, -1));
 
-        txtz3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtz3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtz3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 70, -1));
+        txtZ3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtZ3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtZ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 70, -1));
 
-        txtu3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtu3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 70, -1));
+        txtU3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtU3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtU3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 70, -1));
 
-        txty4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txty4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txty4.addActionListener(new java.awt.event.ActionListener() {
+        txtY4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtY4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtY4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txty4ActionPerformed(evt);
+                txtY4ActionPerformed(evt);
             }
         });
-        fondoPanel.add(txty4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 70, -1));
+        fondoPanel.add(txtY4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 70, -1));
 
-        txtz4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtz4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtz4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 70, -1));
+        txtZ4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtZ4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtZ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 70, -1));
 
-        txtu4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtu4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 70, -1));
+        txtU4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtU4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtU4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 70, -1));
 
-        txtti1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtti1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtti1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 70, -1));
+        txtTI1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTI1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 70, -1));
 
-        txtti2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtti2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtti2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 70, -1));
+        txtTI2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTI2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, 70, -1));
 
-        txtti3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtti3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtti3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 70, -1));
+        txtTI3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTI3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTI3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 70, -1));
 
-        txtti4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        txtti4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fondoPanel.add(txtti4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 70, -1));
+        txtTI4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTI4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 70, -1));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
@@ -343,103 +353,100 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        txtX1.setText("");
+        txtX2.setText("");
+        txtX3.setText("");
+        txtX4.setText("");
+
+        txtY1.setText("");
+        txtY2.setText("");
+        txtY3.setText("");
+        txtY4.setText("");
+
+        txtZ1.setText("");
+        txtZ2.setText("");
+        txtZ3.setText("");
+        txtZ4.setText("");
+
+        txtU1.setText("");
+        txtU2.setText("");
+        txtU3.setText("");
+        txtU4.setText("");
+
+        txtTI1.setText("");
+        txtTI2.setText("");
+        txtTI3.setText("");
+        txtTI4.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
 
-        float X1 = Float.parseFloat(txtx1.getText());
-        float X2 = Float.parseFloat(txtx2.getText());
-        float X3 = Float.parseFloat(txtx3.getText());
-        float X4 = Float.parseFloat(txtx4.getText());
+        try {
+            // Validar que ningún campo esté vacío
+            JTextField[] campos = {
+                txtX2, txtY1, txtZ1, txtU1, txtTI1,
+                txtX1, txtY2, txtZ2, txtU2, txtTI2,
+                txtX3, txtY3, txtZ3, txtU3, txtTI3,
+                txtX4, txtY4, txtZ4, txtU4, txtTI4
+            };
 
-        float Y1 = Float.parseFloat(txty1.getText());
-        float Y2 = Float.parseFloat(txty2.getText());
-        float Y3 = Float.parseFloat(txty3.getText());
-        float Y4 = Float.parseFloat(txty4.getText());
+            for (JTextField campo : campos) {
+                if (campo.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Debe ingresar todos los valores respectivos.");
+                    return;
+                }
+            }
 
-        float Z1 = Float.parseFloat(txtz1.getText());
-        float Z2 = Float.parseFloat(txtz2.getText());
-        float Z3 = Float.parseFloat(txtz3.getText());
-        float Z4 = Float.parseFloat(txtz4.getText());
+            // Leer coeficientes desde JTextFields
+            double[][] A = new double[4][4];
+            double[] B = new double[4];
 
-        float U1 = Float.parseFloat(txtu1.getText());
-        float U2 = Float.parseFloat(txtu2.getText());
-        float U3 = Float.parseFloat(txtu3.getText());
-        float U4 = Float.parseFloat(txtu4.getText());
+            A[0][0] = Double.parseDouble(txtX2.getText());
+            A[0][1] = Double.parseDouble(txtY1.getText());
+            A[0][2] = Double.parseDouble(txtZ1.getText());
+            A[0][3] = Double.parseDouble(txtU1.getText());
+            B[0] = Double.parseDouble(txtTI1.getText());
 
-        float TI1 = Float.parseFloat(txtti1.getText());
-        float TI2 = Float.parseFloat(txtti2.getText());
-        float TI3 = Float.parseFloat(txtti3.getText());
-        float TI4 = Float.parseFloat(txtti4.getText());
+            A[1][0] = Double.parseDouble(txtX1.getText());
+            A[1][1] = Double.parseDouble(txtY2.getText());
+            A[1][2] = Double.parseDouble(txtZ2.getText());
+            A[1][3] = Double.parseDouble(txtU2.getText());
+            B[1] = Double.parseDouble(txtTI2.getText());
 
-        // Cálculo del determinante principal (detA)
-        float detA = calcularDeterminante4x4(
-                X1, Y1, Z1, U1,
-                X2, Y2, Z2, U2,
-                X3, Y3, Z3, U3,
-                X4, Y4, Z4, U4
-        );
+            A[2][0] = Double.parseDouble(txtX3.getText());
+            A[2][1] = Double.parseDouble(txtY3.getText());
+            A[2][2] = Double.parseDouble(txtZ3.getText());
+            A[2][3] = Double.parseDouble(txtU3.getText());
+            B[2] = Double.parseDouble(txtTI3.getText());
 
-        // Verificar si el determinante principal es cero (sistema sin solución única)
-        if (detA == 0) {
-            txtResultadoX.setText("Sistema sin solución única");
-            txtResultadoY.setText("Sistema sin solución única");
-            txtResultadoZ.setText("Sistema sin solución única");
-            txtResultadoU.setText("Sistema sin solución única");
-            return;
+            A[3][0] = Double.parseDouble(txtX4.getText());
+            A[3][1] = Double.parseDouble(txtY4.getText());
+            A[3][2] = Double.parseDouble(txtZ4.getText());
+            A[3][3] = Double.parseDouble(txtU4.getText());
+            B[3] = Double.parseDouble(txtTI4.getText());
+
+            // Determinante principal
+            double detA = determinante4x4(A);
+            if (detA == 0) {
+                JOptionPane.showMessageDialog(this, "El sistema no tiene solución única (determinante = 0).");
+                return;
+            }
+
+            // Reemplazo de columnas para Cramer
+            double x = determinante4x4(reemplazarColumna(A, B, 0)) / detA;
+            double y = determinante4x4(reemplazarColumna(A, B, 1)) / detA;
+            double z = determinante4x4(reemplazarColumna(A, B, 2)) / detA;
+            double u = determinante4x4(reemplazarColumna(A, B, 3)) / detA;
+
+            // Mostrar resultados con dos decimales
+            txtResultadoX.setText(String.format("%.2f", x));
+            txtResultadoY.setText(String.format("%.2f", y));
+            txtResultadoZ.setText(String.format("%.2f", z));
+            txtResultadoU.setText(String.format("%.2f", u));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, asegúrate de ingresar valores numéricos válidos.");
         }
-
-        // Cálculo del determinante para X (reemplazando la columna X por los términos independientes)
-        float detX = calcularDeterminante4x4(
-                TI1, Y1, Z1, U1,
-                TI2, Y2, Z2, U2,
-                TI3, Y3, Z3, U3,
-                TI4, Y4, Z4, U4
-        );
-
-        // Cálculo del determinante para Y (reemplazando la columna Y por los términos independientes)
-        float detY = calcularDeterminante4x4(
-                X1, TI1, Z1, U1,
-                X2, TI2, Z2, U2,
-                X3, TI3, Z3, U3,
-                X4, TI4, Z4, U4
-        );
-
-        // Cálculo del determinante para Z (reemplazando la columna Z por los términos independientes)
-        float detZ = calcularDeterminante4x4(
-                X1, Y1, TI1, U1,
-                X2, Y2, TI2, U2,
-                X3, Y3, TI3, U3,
-                X4, Y4, TI4, U4
-        );
-
-        // Cálculo del determinante para U (reemplazando la columna U por los términos independientes)
-        float detU = calcularDeterminante4x4(
-                X1, Y1, Z1, TI1,
-                X2, Y2, Z2, TI2,
-                X3, Y3, Z3, TI3,
-                X4, Y4, Z4, TI4
-        );
-
-        float x = detX / detA;
-        float y = detY / detA;
-        float z = detZ / detA;
-        float u = detU / detA;
-
-        String respuestaX = "" + x;
-        txtResultadoX.setText(respuestaX);
-
-        String respuestaY = "" + y;
-        txtResultadoY.setText(respuestaY);
-
-        String respuestaZ = "" + z;
-        txtResultadoZ.setText(respuestaZ);
-
-        String respuestaU = "" + u;
-        txtResultadoU.setText(respuestaU);
-
-
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -454,13 +461,11 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void txty2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txty2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txty2ActionPerformed
+    private void txtY2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtY2ActionPerformed
+    }//GEN-LAST:event_txtY2ActionPerformed
 
-    private void txty4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txty4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txty4ActionPerformed
+    private void txtY4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtY4ActionPerformed
+    }//GEN-LAST:event_txtY4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -522,25 +527,25 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
     public javax.swing.JTextField txtResultadoX;
     public javax.swing.JTextField txtResultadoY;
     public javax.swing.JTextField txtResultadoZ;
-    private javax.swing.JTextField txtti1;
-    private javax.swing.JTextField txtti2;
-    private javax.swing.JTextField txtti3;
-    private javax.swing.JTextField txtti4;
-    private javax.swing.JTextField txtu1;
-    private javax.swing.JTextField txtu2;
-    private javax.swing.JTextField txtu3;
-    private javax.swing.JTextField txtu4;
-    private javax.swing.JTextField txtx1;
-    private javax.swing.JTextField txtx2;
-    private javax.swing.JTextField txtx3;
-    private javax.swing.JTextField txtx4;
-    private javax.swing.JTextField txty1;
-    private javax.swing.JTextField txty2;
-    private javax.swing.JTextField txty3;
-    private javax.swing.JTextField txty4;
-    private javax.swing.JTextField txtz1;
-    private javax.swing.JTextField txtz2;
-    private javax.swing.JTextField txtz3;
-    private javax.swing.JTextField txtz4;
+    private javax.swing.JTextField txtTI1;
+    private javax.swing.JTextField txtTI2;
+    private javax.swing.JTextField txtTI3;
+    private javax.swing.JTextField txtTI4;
+    private javax.swing.JTextField txtU1;
+    private javax.swing.JTextField txtU2;
+    private javax.swing.JTextField txtU3;
+    private javax.swing.JTextField txtU4;
+    private javax.swing.JTextField txtX1;
+    private javax.swing.JTextField txtX2;
+    private javax.swing.JTextField txtX3;
+    private javax.swing.JTextField txtX4;
+    private javax.swing.JTextField txtY1;
+    private javax.swing.JTextField txtY2;
+    private javax.swing.JTextField txtY3;
+    private javax.swing.JTextField txtY4;
+    private javax.swing.JTextField txtZ1;
+    private javax.swing.JTextField txtZ2;
+    private javax.swing.JTextField txtZ3;
+    private javax.swing.JTextField txtZ4;
     // End of variables declaration//GEN-END:variables
 }
