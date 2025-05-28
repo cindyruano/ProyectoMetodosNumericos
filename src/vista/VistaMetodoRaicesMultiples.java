@@ -1,20 +1,84 @@
 package vista;
 
+import java.awt.Color;
+import java.awt.Component;
 import javax.swing.JFrame;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.text.DecimalFormat;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+
+//import javax.swing.table.DefaultTableCellRenderer;
+//import java.awt.*;
+//import javax.swing.JTable;
 /**
  *
  * @author cindy
  */
 public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
+//    private DefaultTableModel dtm;
+//    private Object[] objetos = new Object[7];
     /**
      * Creates new form VistaMetodoRaicesMultiples
      */
+//    class ColorRenderer extends DefaultTableCellRenderer {
+//
+//        @Override
+//        public Component getTableCellRendererComponent(JTable table, Object value,
+//                boolean isSelected, boolean hasFocus, int row, int column) {
+//
+//            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+//
+//            try {
+//                double num = Double.parseDouble(value.toString().replace(",", "."));
+//                if (num < 0) {
+//                    c.setForeground(Color.RED);
+//                } else {
+//                    c.setForeground(Color.BLACK);
+//                }
+//            } catch (NumberFormatException ex) {
+//                c.setForeground(Color.BLACK);
+//            }
+//            return c;
+//        }
+//    }
+//
+//    private boolean esFuncionValida(String funcion) {
+//        // Solo permite dígitos, x, operadores + - * / ^, paréntesis, punto decimal y espacios
+//        return funcion.matches("[0-9x+\\-*/^(). ]+");
+//    }
+    
+    class ColorRenderer extends DefaultTableCellRenderer {
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+
+        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+        try {
+            double num = Double.parseDouble(value.toString().replace(",", "."));
+            if (num < 0) {
+                c.setForeground(Color.RED);
+            } else {
+                c.setForeground(Color.BLACK);
+            }
+        } catch (NumberFormatException ex) {
+            c.setForeground(Color.BLACK);
+        }
+
+        return c;
+    }
+}
+
     public VistaMetodoRaicesMultiples() {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+//        dtm = (DefaultTableModel) tblRaicesMultiples.getModel();
     }
 
     /**
@@ -34,15 +98,29 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         btnResolver = new javax.swing.JButton();
         tblTablaRaicesMultiples = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblRaicesMultiples = new javax.swing.JTable();
         funcion = new javax.swing.JLabel();
         funcionDerivada = new javax.swing.JLabel();
         segundaFuncion = new javax.swing.JLabel();
         recurrencia = new javax.swing.JLabel();
-        txtFuncion = new javax.swing.JTextField();
+        txtTermino1 = new javax.swing.JTextField();
         txtFuncionDerivada = new javax.swing.JTextField();
         txtSegundaDerivada = new javax.swing.JTextField();
         txtRecurrencia = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblIntervalos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtXi = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtVariable1 = new javax.swing.JTextField();
+        txtSimPotencia = new javax.swing.JTextField();
+        txtPotencia = new javax.swing.JTextField();
+        txtTermino2 = new javax.swing.JTextField();
+        txtVariable2 = new javax.swing.JTextField();
+        txtTermino3 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +151,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 80, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 640, 80, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -84,7 +162,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 640, 80, 30));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
@@ -95,9 +173,9 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 80, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRaicesMultiples.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -108,9 +186,9 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 "i", "Xi", "f(Xi)", "f'(Xi)", "f''(Xi)", "Xr", "Tolerancia"
             }
         ));
-        tblTablaRaicesMultiples.setViewportView(jTable1);
+        tblTablaRaicesMultiples.setViewportView(tblRaicesMultiples);
 
-        fondoPanel.add(tblTablaRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 890, 300));
+        fondoPanel.add(tblTablaRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 550, 310));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -130,10 +208,10 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 600, -1, -1));
 
-        txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 260, -1));
+        txtTermino1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.add(txtTermino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 30, -1));
 
         txtFuncionDerivada.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
@@ -147,7 +225,57 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         fondoPanel.add(txtSegundaDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
         txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
+        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 230, -1));
+
+        tblIntervalos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "x", "f(x)"
+            }
+        ));
+        tblIntervalos.setToolTipText("");
+        tblIntervalos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(tblIntervalos);
+
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 220, 230));
+
+        jLabel1.setText("Xi:");
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 150, -1));
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, 30));
+
+        jLabel2.setText("INTERVALOS:");
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, -1, -1));
+
+        txtVariable1.setText("x");
+        fondoPanel.add(txtVariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 30, -1));
+
+        txtSimPotencia.setText("^");
+        fondoPanel.add(txtSimPotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, -1));
+        fondoPanel.add(txtPotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 30, -1));
+        fondoPanel.add(txtTermino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 40, -1));
+
+        txtVariable2.setText("x");
+        fondoPanel.add(txtVariable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 30, -1));
+        fondoPanel.add(txtTermino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 40, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        fondoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 140, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,12 +304,65 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtSegundaDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundaDerivadaActionPerformed
-        
+
     }//GEN-LAST:event_txtSegundaDerivadaActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        
+//        objeto[0] = txt
     }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            // Obtener valores de los JTextFields
+            String termino1 = txtTermino1.getText().trim();
+            String variable1 = txtVariable1.getText().trim();
+            String simPotencia = txtSimPotencia.getText().trim();
+            String potencia = txtPotencia.getText().trim();
+            String termino2 = txtTermino2.getText().trim(); // Ej: "+3x"
+            String variable2 = txtVariable2.getText().trim();
+            String termino3 = txtTermino3.getText().trim(); // Constante
+
+            // Convertir a números
+            double a = Double.parseDouble(termino1);
+            int b = Integer.parseInt(potencia);
+            String strTermino2 = termino2.replaceAll("[^\\d\\-\\.]", "");
+            double c = Double.parseDouble(strTermino2);
+            double d = Double.parseDouble(termino3);
+
+            // Modelo para la tabla
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("x");
+            modelo.addColumn("f(x)");
+
+            // Formateador de decimales
+            DecimalFormat formato = new DecimalFormat("#.00");
+
+            // Calcular y llenar tabla
+            for (int x = 5; x >= -5; x--) {
+                double fx = a * Math.pow(x, b) + c * x + d;
+                String fxFormateado = formato.format(fx);
+                modelo.addRow(new Object[]{x, fxFormateado});
+            }
+
+            // Asignar modelo a la tabla
+            tblIntervalos.setModel(modelo);
+
+            // Centrado para columna "x"
+            DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+            centrado.setHorizontalAlignment(SwingConstants.CENTER);
+            tblIntervalos.getColumnModel().getColumn(0).setCellRenderer(centrado);
+
+            // Color rojo si es negativo + centrado para f(x)
+            tblIntervalos.getColumnModel().getColumn(1).setCellRenderer(new ColorRenderer() {
+                {
+                    setHorizontalAlignment(SwingConstants.CENTER);
+                }
+            });
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese los valores" + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +400,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnResolver;
@@ -226,15 +408,28 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel funcionDerivada;
     private javax.swing.JLabel imagen;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JLabel segundaFuncion;
     private javax.swing.JSeparator separador;
+    private javax.swing.JTable tblIntervalos;
+    private javax.swing.JTable tblRaicesMultiples;
     private javax.swing.JScrollPane tblTablaRaicesMultiples;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtFuncion;
     private javax.swing.JTextField txtFuncionDerivada;
+    private javax.swing.JTextField txtPotencia;
     private javax.swing.JTextField txtRecurrencia;
     private javax.swing.JTextField txtSegundaDerivada;
+    private javax.swing.JTextField txtSimPotencia;
+    private javax.swing.JTextField txtTermino1;
+    private javax.swing.JTextField txtTermino2;
+    private javax.swing.JTextField txtTermino3;
+    private javax.swing.JTextField txtVariable1;
+    private javax.swing.JTextField txtVariable2;
+    private javax.swing.JTextField txtXi;
     // End of variables declaration//GEN-END:variables
 }
