@@ -90,6 +90,11 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResolverActionPerformed(evt);
+            }
+        });
         fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 80, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -171,8 +176,12 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtSegundaDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundaDerivadaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSegundaDerivadaActionPerformed
+
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+        
+    }//GEN-LAST:event_btnResolverActionPerformed
 
     /**
      * @param args the command line arguments
