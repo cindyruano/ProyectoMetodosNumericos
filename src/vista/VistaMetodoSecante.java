@@ -175,6 +175,7 @@ public class VistaMetodoSecante extends javax.swing.JFrame {
         });
         fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 230, -1));
 
+        tblTablaSecante.setBackground(new java.awt.Color(192, 197, 196));
         tblTablaSecante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},

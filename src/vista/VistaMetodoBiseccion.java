@@ -207,6 +207,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         txtFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.add(txtFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 260, -1));
 
+        tblBiseccion.setBackground(new java.awt.Color(192, 197, 196));
         tblBiseccion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         tblBiseccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -2,16 +2,22 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import vista.VistaRaicesMultiplesTablas;
 
 /**
  *
@@ -19,7 +25,20 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
-    //Función Auxiliar de Primera Derivada 
+    private VistaRaicesMultiplesTablas vistaTablas;
+    private DefaultTableModel modeloIntervalo1;
+    private DefaultTableModel modeloIntervalo2;
+    private DefaultTableModel modeloIntervalo3;
+    private DefaultTableModel modeloIntervalo4;
+
+    public VistaMetodoRaicesMultiples() {
+        initComponents();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
+    //------------ MÉTODOS AUXILIARES ------------
+    //PRIMERA DERIVADA
     private String formatDerivado(double coef, int pot) {
         if (pot == 0) {
             return String.valueOf(coef);
@@ -30,7 +49,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         return coef + "x^" + pot;
     }
 
-    //Función Auxiliar de Segunda Derivada 
+    //SEGUNDA DERIVADA 
     private String formatearDerivado(double coef, int pot) {
         String coefStr = (coef == (int) coef) ? String.valueOf((int) coef) : String.valueOf(coef);
         if (pot == 0) {
@@ -42,7 +61,51 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         return coefStr + "x^" + pot;
     }
 
-    //Diseño Tabla
+    //EVALUAR DERIVADAS 
+    private double evaluarFuncion(double x) {
+        double resultado = 0;
+        resultado += Double.parseDouble(txtTermino1.getText()) * Math.pow(x, Integer.parseInt(txtPotencia1.getText()));
+        if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
+            resultado += Double.parseDouble(txtTermino2.getText()) * Math.pow(x, Integer.parseInt(txtPotencia2.getText()));
+        }
+        if (!txtTermino3.getText().trim().isEmpty()) {
+            resultado += Double.parseDouble(txtTermino3.getText());
+        }
+        return resultado;
+    }
+
+    private double evaluarPrimeraDerivada(double x) {
+        double resultado = 0;
+        double coef1 = Double.parseDouble(txtTermino1.getText());
+        int pot1 = Integer.parseInt(txtPotencia1.getText());
+
+        resultado += coef1 * pot1 * Math.pow(x, pot1 - 1);
+        if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
+            double coef2 = Double.parseDouble(txtTermino2.getText());
+            int pot2 = Integer.parseInt(txtPotencia2.getText());
+            resultado += coef2 * pot2 * Math.pow(x, pot2 - 1);
+        }
+        return resultado;
+    }
+
+    private double evaluarSegundaDerivada(double x) {
+        double resultado = 0;
+        double coef1 = Double.parseDouble(txtTermino1.getText());
+        int pot1 = Integer.parseInt(txtPotencia1.getText());
+        if (pot1 >= 2) {
+            resultado += coef1 * pot1 * (pot1 - 1) * Math.pow(x, pot1 - 2);
+        }
+        if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
+            double coef2 = Double.parseDouble(txtTermino2.getText());
+            int pot2 = Integer.parseInt(txtPotencia2.getText());
+            if (pot2 >= 2) {
+                resultado += coef2 * pot2 * (pot2 - 1) * Math.pow(x, pot2 - 2);
+            }
+        }
+        return resultado;
+    }
+
+    //------------ DISEÑO TABLA ------------
     class ColorRenderer extends DefaultTableCellRenderer {
 
         @Override
@@ -65,10 +128,13 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         }
     }
 
-    public VistaMetodoRaicesMultiples() {
-        initComponents();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+    private void centrarColumnas(JTable tabla) {
+        DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
+        centrado.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tabla.getColumnCount(); i++) {
+            tabla.getColumnModel().getColumn(i).setCellRenderer(centrado);
+        }
     }
 
     /**
@@ -96,8 +162,6 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         txtSegundaDerivada = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblIntervalos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        txtXi = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtVariable1 = new javax.swing.JTextField();
@@ -112,10 +176,13 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         txtSimPotencia2 = new javax.swing.JTextField();
         txtPotencia2 = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtRecurrencias = new javax.swing.JTextArea();
-        btnDerivar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtIntervalo1 = new javax.swing.JTextField();
+        txtIntervalo2 = new javax.swing.JTextField();
+        txtIntervalo3 = new javax.swing.JTextField();
+        txtIntervalo4 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtRecurrencia = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,7 +213,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 590, 80, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 620, 80, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -157,9 +224,9 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 590, 80, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 620, 80, 30));
 
-        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
+        btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnResolver.setText("RESOLVER");
         btnResolver.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnResolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -168,33 +235,39 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 80, 30));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 80, 30));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         funcion.setText("FUNCIÓN:");
-        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, -1));
+        fondoPanel.add(funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 70, -1));
 
         funcionDerivada.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcionDerivada.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         funcionDerivada.setText("FUNCIÓN DERIVADA:");
-        fondoPanel.add(funcionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 160, -1));
+        fondoPanel.add(funcionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 160, -1));
 
         segundaFuncion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         segundaFuncion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         segundaFuncion.setText("II FUNCIÓN DERIVADA:");
-        fondoPanel.add(segundaFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 160, -1));
+        fondoPanel.add(segundaFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 160, -1));
 
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, -1, -1));
 
-        txtTermino1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtTermino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 30, -1));
+        txtTermino1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTermino1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTermino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 50, -1));
 
         txtFuncionDerivada.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 170, -1));
+        txtFuncionDerivada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFuncionDerivadaActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 100, -1));
 
         txtSegundaDerivada.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         txtSegundaDerivada.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +275,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 txtSegundaDerivadaActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtSegundaDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
+        fondoPanel.add(txtSegundaDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 100, -1));
 
         tblIntervalos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -219,77 +292,121 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         tblIntervalos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblIntervalos);
 
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 260, 230));
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 260, 200));
 
-        jLabel1.setText("Xi:");
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
-        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 272, 150, 30));
-
+        btnBuscar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, 30));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 80, 30));
 
+        jLabel2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jLabel2.setText("INTERVALOS:");
         fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
+        txtVariable1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtVariable1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtVariable1.setText("x");
-        fondoPanel.add(txtVariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 30, -1));
+        fondoPanel.add(txtVariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 30, -1));
 
+        txtSimPotencia1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtSimPotencia1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSimPotencia1.setText("^");
         txtSimPotencia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSimPotencia1ActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtSimPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, -1));
-        fondoPanel.add(txtPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 30, -1));
-        fondoPanel.add(txtTermino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 40, -1));
+        fondoPanel.add(txtSimPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 30, 20));
 
+        txtPotencia1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtPotencia1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 30, 20));
+
+        txtTermino2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTermino2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTermino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 50, -1));
+
+        txtVariable2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtVariable2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtVariable2.setText("x");
-        fondoPanel.add(txtVariable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 30, -1));
-        fondoPanel.add(txtTermino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 40, -1));
+        fondoPanel.add(txtVariable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 30, -1));
+
+        txtTermino3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtTermino3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtTermino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 50, -1));
 
         txtIntervalos.setColumns(20);
+        txtIntervalos.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
         txtIntervalos.setRows(5);
         jScrollPane2.setViewportView(txtIntervalos);
 
         fondoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 170, 70));
 
+        btnMostrarTablas.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnMostrarTablas.setText("MOSTRAR TABLAS");
+        btnMostrarTablas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnMostrarTablas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarTablasActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnMostrarTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, -1, 30));
+        fondoPanel.add(btnMostrarTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, 140, 30));
 
+        txtSimPotencia2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtSimPotencia2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSimPotencia2.setText("^");
-        fondoPanel.add(txtSimPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 30, -1));
-        fondoPanel.add(txtPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 30, -1));
+        fondoPanel.add(txtSimPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 30, 20));
 
+        txtPotencia2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        txtPotencia2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 30, 20));
+
+        btnLimpiar.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, -1, 30));
+        fondoPanel.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 80, 30));
 
-        txtRecurrencias.setColumns(20);
-        txtRecurrencias.setRows(5);
-        jScrollPane3.setViewportView(txtRecurrencias);
-
-        fondoPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
-
-        btnDerivar.setText("DERIVAR");
-        fondoPanel.add(btnDerivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
-
+        jLabel3.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jLabel3.setText("Ingrese los intervalos");
-        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+
+        txtIntervalo1.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtIntervalo1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtIntervalo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 269, 260, -1));
+
+        txtIntervalo2.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtIntervalo2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtIntervalo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 296, 260, -1));
+
+        txtIntervalo3.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtIntervalo3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fondoPanel.add(txtIntervalo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 323, 260, -1));
+
+        txtIntervalo4.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        txtIntervalo4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIntervalo4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIntervalo4ActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtIntervalo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 260, -1));
+
+        txtRecurrencia.setColumns(20);
+        txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 16)); // NOI18N
+        txtRecurrencia.setRows(5);
+        jScrollPane3.setViewportView(txtRecurrencia);
+
+        fondoPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 260, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,29 +422,53 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        VistaInicio vi = new VistaInicio();
-        vi.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnInicioActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        VistaMetodoAbierto vi = new VistaMetodoAbierto();
-        vi.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnRegresarActionPerformed
+        txtPotencia1.setText("");
+        txtPotencia2.setText("");
+        txtTermino1.setText("");
+        txtTermino2.setText("");
+        txtTermino3.setText("");
+        txtSegundaDerivada.setText("");
+        txtFuncionDerivada.setText("");
+        txtIntervalos.setText("");
+        txtIntervalo1.setText("");
+        txtIntervalo2.setText("");
+        txtIntervalo3.setText("");
+        txtIntervalo4.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void txtSegundaDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundaDerivadaActionPerformed
+    private void btnMostrarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablasActionPerformed
 
-    }//GEN-LAST:event_txtSegundaDerivadaActionPerformed
+        VistaRaicesMultiplesTablas vistaTablas = new VistaRaicesMultiplesTablas();
 
-    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-//        objeto[0] = txt
-    }//GEN-LAST:event_btnResolverActionPerformed
+        if (modeloIntervalo1 != null) {
+            vistaTablas.tblIntervalo1.setModel(modeloIntervalo1);
+            centrarColumnas(vistaTablas.tblIntervalo1);
+        }
+        if (modeloIntervalo2 != null) {
+            vistaTablas.tblIntervalo2.setModel(modeloIntervalo2);
+            centrarColumnas(vistaTablas.tblIntervalo2);
+        }
+        if (modeloIntervalo3 != null) {
+            vistaTablas.tblIntervalo3.setModel(modeloIntervalo3);
+            centrarColumnas(vistaTablas.tblIntervalo3);
+        }
+        if (modeloIntervalo4 != null) {
+            vistaTablas.tblIntervalo4.setModel(modeloIntervalo4);
+            centrarColumnas(vistaTablas.tblIntervalo4);
+        }
+
+        vistaTablas.setVisible(true);
+        vistaTablas.setLocationRelativeTo(this);
+    }//GEN-LAST:event_btnMostrarTablasActionPerformed
+
+    private void txtSimPotencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSimPotencia1ActionPerformed
+    }//GEN-LAST:event_txtSimPotencia1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        //INTERVALOS y VALOR f(x)
+        //------------ INTERVALOS y VALOR f(x) ------------
         try {
             // Valores por defecto
             String potencia1 = txtPotencia1.getText().trim();
@@ -408,7 +549,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese los valores correctamente: " + ex.getMessage());
         }
 
-        //DERIVADAS 
+        //------------ DERIVADAS ------------
         try {
             // Leer datos del primer término
             double coef1 = Double.parseDouble(txtTermino1.getText().trim());
@@ -418,7 +559,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             double derCoef1 = coef1 * pot1;
             int derPot1 = pot1 - 1;
 
-            //Segunda derivada primer término 
+            //Segunda derivada primer término
             double segDerCoef1 = derCoef1 * derPot1;
             int segDerPot1 = derPot1 - 1;
 
@@ -434,7 +575,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             double segDerCoef2 = derCoef2 * derPot2;
             int segDerPot2 = derPot2 - 1;
 
-            /// Construcción de derivada
+            // Construcción de derivada
             StringBuilder primeraDerivada = new StringBuilder();
             StringBuilder segundaDerivada = new StringBuilder();
 
@@ -470,26 +611,97 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void txtSimPotencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSimPotencia1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSimPotencia1ActionPerformed
+    private void txtSegundaDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundaDerivadaActionPerformed
+    }//GEN-LAST:event_txtSegundaDerivadaActionPerformed
 
-    private void btnMostrarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablasActionPerformed
-        VistaRaicesMultiplesTablas vi = new VistaRaicesMultiplesTablas();
+    private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
+
+        try {
+            double[] intervalos = new double[4];
+            JTextField[] campos = {txtIntervalo1, txtIntervalo2, txtIntervalo3, txtIntervalo4};
+            DefaultTableModel[] modelos = new DefaultTableModel[4];
+            StringBuilder resumenXr = new StringBuilder();
+
+            for (int j = 0; j < 4; j++) {
+                if (!campos[j].getText().trim().isEmpty()) {
+                    double xi = Double.parseDouble(campos[j].getText().trim());
+                    DefaultTableModel modeloTabla = new DefaultTableModel();
+                    modeloTabla.addColumn("i");
+                    modeloTabla.addColumn("Xi");
+                    modeloTabla.addColumn("f(Xi)");
+                    modeloTabla.addColumn("f'(Xi)");
+                    modeloTabla.addColumn("f''(Xi)");
+                    modeloTabla.addColumn("Xr");
+                    modeloTabla.addColumn("Tolerancia");
+
+                    int i = 1;
+                    double xrAnterior = xi;
+                    double tolerancia = 1;
+                    DecimalFormat formato = new DecimalFormat("0.0000");
+
+                    while (tolerancia > 0.0001) {
+                        double fx = evaluarFuncion(xi);
+                        double f1x = evaluarPrimeraDerivada(xi);
+                        double f2x = evaluarSegundaDerivada(xi);
+
+                        double xr = xi - ((fx * f1x) / ((Math.pow(f1x, 2)) - (fx * f2x)));
+
+                        String tolTexto = (i == 0) ? "------" : formato.format(Math.abs(xr - xrAnterior));
+
+                        modeloTabla.addRow(new Object[]{
+                            i,
+                            formato.format(xi),
+                            formato.format(fx),
+                            formato.format(f1x),
+                            formato.format(f2x),
+                            formato.format(xr),
+                            tolTexto
+                        });
+
+                        tolerancia = Math.abs(xr - xrAnterior);
+                        xrAnterior = xr;
+                        xi = xr;
+                        i++;
+                    }
+
+                    modelos[j] = modeloTabla;
+                    resumenXr.append("Intervalo ").append(j + 1).append(": ").append(formato.format(xrAnterior)).append("\n");
+                }
+            }
+
+            // Guardar modelos
+            modeloIntervalo1 = modelos[0];
+            modeloIntervalo2 = modelos[1];
+            modeloIntervalo3 = modelos[2];
+            modeloIntervalo4 = modelos[3];
+
+            // Mostrar última recurrencia
+            txtRecurrencia.setText(resumenXr.toString());
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error al resolver: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnResolverActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaMetodoAbierto vi = new VistaMetodoAbierto();
         vi.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnMostrarTablasActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtPotencia1.setText("");
-        txtPotencia2.setText("");
-        txtTermino1.setText("");
-        txtTermino2.setText("");
-        txtTermino3.setText("");
-        txtSegundaDerivada.setText("");
-        txtFuncionDerivada.setText("");
-        txtIntervalos.setText("");
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        VistaInicio vi = new VistaInicio();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void txtIntervalo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntervalo4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIntervalo4ActionPerformed
+
+    private void txtFuncionDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncionDerivadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFuncionDerivadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,17 +740,15 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnDerivar;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnMostrarTablas;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton btnResolver;
+    public javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
     private javax.swing.JLabel funcion;
     private javax.swing.JLabel funcionDerivada;
     private javax.swing.JLabel imagen;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -550,10 +760,14 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private javax.swing.JTable tblIntervalos;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtFuncionDerivada;
+    private javax.swing.JTextField txtIntervalo1;
+    private javax.swing.JTextField txtIntervalo2;
+    private javax.swing.JTextField txtIntervalo3;
+    private javax.swing.JTextField txtIntervalo4;
     private javax.swing.JTextArea txtIntervalos;
     private javax.swing.JTextField txtPotencia1;
     private javax.swing.JTextField txtPotencia2;
-    private javax.swing.JTextArea txtRecurrencias;
+    public javax.swing.JTextArea txtRecurrencia;
     private javax.swing.JTextField txtSegundaDerivada;
     private javax.swing.JTextField txtSimPotencia1;
     private javax.swing.JTextField txtSimPotencia2;
@@ -562,6 +776,5 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private javax.swing.JTextField txtTermino3;
     private javax.swing.JTextField txtVariable1;
     private javax.swing.JTextField txtVariable2;
-    private javax.swing.JTextField txtXi;
     // End of variables declaration//GEN-END:variables
 }

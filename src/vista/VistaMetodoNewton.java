@@ -193,6 +193,7 @@ public class VistaMetodoNewton extends javax.swing.JFrame {
         });
         fondoPanel.add(txtFuncionDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
 
+        jTable1.setBackground(new java.awt.Color(192, 197, 196));
         jTable1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -167,6 +167,7 @@ public class VistaMetodoMuller extends javax.swing.JFrame {
         });
         fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 235, 80, 30));
 
+        jTable1.setBackground(new java.awt.Color(192, 197, 196));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},

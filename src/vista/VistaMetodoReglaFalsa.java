@@ -113,6 +113,7 @@ public class VistaMetodoReglaFalsa extends javax.swing.JFrame {
         });
         fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 240, 80, 30));
 
+        jtReglaFalsa.setBackground(new java.awt.Color(192, 197, 196));
         jtReglaFalsa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
