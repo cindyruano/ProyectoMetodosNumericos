@@ -7,78 +7,68 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-//import javax.swing.table.DefaultTableCellRenderer;
-//import java.awt.*;
-//import javax.swing.JTable;
 /**
  *
  * @author cindy
  */
 public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
-//    private DefaultTableModel dtm;
-//    private Object[] objetos = new Object[7];
-    /**
-     * Creates new form VistaMetodoRaicesMultiples
-     */
-//    class ColorRenderer extends DefaultTableCellRenderer {
-//
-//        @Override
-//        public Component getTableCellRendererComponent(JTable table, Object value,
-//                boolean isSelected, boolean hasFocus, int row, int column) {
-//
-//            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-//
-//            try {
-//                double num = Double.parseDouble(value.toString().replace(",", "."));
-//                if (num < 0) {
-//                    c.setForeground(Color.RED);
-//                } else {
-//                    c.setForeground(Color.BLACK);
-//                }
-//            } catch (NumberFormatException ex) {
-//                c.setForeground(Color.BLACK);
-//            }
-//            return c;
-//        }
-//    }
-//
-//    private boolean esFuncionValida(String funcion) {
-//        // Solo permite dígitos, x, operadores + - * / ^, paréntesis, punto decimal y espacios
-//        return funcion.matches("[0-9x+\\-*/^(). ]+");
-//    }
-    
+    //Función Auxiliar de Primera Derivada 
+    private String formatDerivado(double coef, int pot) {
+        if (pot == 0) {
+            return String.valueOf(coef);
+        }
+        if (pot == 1) {
+            return coef + "x";
+        }
+        return coef + "x^" + pot;
+    }
+
+    //Función Auxiliar de Segunda Derivada 
+    private String formatearDerivado(double coef, int pot) {
+        String coefStr = (coef == (int) coef) ? String.valueOf((int) coef) : String.valueOf(coef);
+        if (pot == 0) {
+            return coefStr;
+        }
+        if (pot == 1) {
+            return coefStr + "x";
+        }
+        return coefStr + "x^" + pot;
+    }
+
+    //Diseño Tabla
     class ColorRenderer extends DefaultTableCellRenderer {
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
 
-        Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
 
-        try {
-            double num = Double.parseDouble(value.toString().replace(",", "."));
-            if (num < 0) {
-                c.setForeground(Color.RED);
-            } else {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+            try {
+                double num = Double.parseDouble(value.toString().replace(",", "."));
+                if (num < 0) {
+                    c.setForeground(Color.RED);
+                } else {
+                    c.setForeground(Color.BLACK);
+                }
+            } catch (NumberFormatException ex) {
                 c.setForeground(Color.BLACK);
             }
-        } catch (NumberFormatException ex) {
-            c.setForeground(Color.BLACK);
+            return c;
         }
-
-        return c;
     }
-}
 
     public VistaMetodoRaicesMultiples() {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-//        dtm = (DefaultTableModel) tblRaicesMultiples.getModel();
     }
 
     /**
@@ -97,8 +87,6 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnResolver = new javax.swing.JButton();
-        tblTablaRaicesMultiples = new javax.swing.JScrollPane();
-        tblRaicesMultiples = new javax.swing.JTable();
         funcion = new javax.swing.JLabel();
         funcionDerivada = new javax.swing.JLabel();
         segundaFuncion = new javax.swing.JLabel();
@@ -106,7 +94,6 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         txtTermino1 = new javax.swing.JTextField();
         txtFuncionDerivada = new javax.swing.JTextField();
         txtSegundaDerivada = new javax.swing.JTextField();
-        txtRecurrencia = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblIntervalos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -114,13 +101,21 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtVariable1 = new javax.swing.JTextField();
-        txtSimPotencia = new javax.swing.JTextField();
-        txtPotencia = new javax.swing.JTextField();
+        txtSimPotencia1 = new javax.swing.JTextField();
+        txtPotencia1 = new javax.swing.JTextField();
         txtTermino2 = new javax.swing.JTextField();
         txtVariable2 = new javax.swing.JTextField();
         txtTermino3 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtIntervalos = new javax.swing.JTextArea();
+        btnMostrarTablas = new javax.swing.JButton();
+        txtSimPotencia2 = new javax.swing.JTextField();
+        txtPotencia2 = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtRecurrencias = new javax.swing.JTextArea();
+        btnDerivar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,7 +146,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 640, 80, 30));
+        fondoPanel.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 590, 80, 30));
 
         btnRegresar.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnRegresar.setText("REGRESAR");
@@ -162,7 +157,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 640, 80, 30));
+        fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 590, 80, 30));
 
         btnResolver.setFont(new java.awt.Font("Gill Sans MT", 0, 12)); // NOI18N
         btnResolver.setText("RESOLVER");
@@ -173,22 +168,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnResolverActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 80, 30));
-
-        tblRaicesMultiples.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "i", "Xi", "f(Xi)", "f'(Xi)", "f''(Xi)", "Xr", "Tolerancia"
-            }
-        ));
-        tblTablaRaicesMultiples.setViewportView(tblRaicesMultiples);
-
-        fondoPanel.add(tblTablaRaicesMultiples, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 550, 310));
+        fondoPanel.add(btnResolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 270, 80, 30));
 
         funcion.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         funcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -208,7 +188,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         recurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         recurrencia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         recurrencia.setText("RECURRENCIA:");
-        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 600, -1, -1));
+        fondoPanel.add(recurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
 
         txtTermino1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         fondoPanel.add(txtTermino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 30, -1));
@@ -223,9 +203,6 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             }
         });
         fondoPanel.add(txtSegundaDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 170, -1));
-
-        txtRecurrencia.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
-        fondoPanel.add(txtRecurrencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 230, -1));
 
         tblIntervalos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -242,11 +219,11 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         tblIntervalos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tblIntervalos);
 
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 220, 230));
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 260, 230));
 
         jLabel1.setText("Xi:");
-        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
-        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 150, -1));
+        fondoPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
+        fondoPanel.add(txtXi, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 272, 150, 30));
 
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -254,28 +231,65 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, 30));
+        fondoPanel.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, 30));
 
         jLabel2.setText("INTERVALOS:");
-        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, -1, -1));
+        fondoPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
         txtVariable1.setText("x");
         fondoPanel.add(txtVariable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 30, -1));
 
-        txtSimPotencia.setText("^");
-        fondoPanel.add(txtSimPotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, -1));
-        fondoPanel.add(txtPotencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 30, -1));
+        txtSimPotencia1.setText("^");
+        txtSimPotencia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSimPotencia1ActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(txtSimPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, -1));
+        fondoPanel.add(txtPotencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 30, -1));
         fondoPanel.add(txtTermino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 40, -1));
 
         txtVariable2.setText("x");
         fondoPanel.add(txtVariable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 30, -1));
-        fondoPanel.add(txtTermino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 40, -1));
+        fondoPanel.add(txtTermino3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 40, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtIntervalos.setColumns(20);
+        txtIntervalos.setRows(5);
+        jScrollPane2.setViewportView(txtIntervalos);
 
-        fondoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 140, 70));
+        fondoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 170, 70));
+
+        btnMostrarTablas.setText("MOSTRAR TABLAS");
+        btnMostrarTablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTablasActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnMostrarTablas, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, -1, 30));
+
+        txtSimPotencia2.setText("^");
+        fondoPanel.add(txtSimPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 30, -1));
+        fondoPanel.add(txtPotencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 30, -1));
+
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        fondoPanel.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, -1, 30));
+
+        txtRecurrencias.setColumns(20);
+        txtRecurrencias.setRows(5);
+        jScrollPane3.setViewportView(txtRecurrencias);
+
+        fondoPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, -1, -1));
+
+        btnDerivar.setText("DERIVAR");
+        fondoPanel.add(btnDerivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
+
+        jLabel3.setText("Ingrese los intervalos");
+        fondoPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,47 +326,78 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResolverActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
-            // Obtener valores de los JTextFields
-            String termino1 = txtTermino1.getText().trim();
-            String variable1 = txtVariable1.getText().trim();
-            String simPotencia = txtSimPotencia.getText().trim();
-            String potencia = txtPotencia.getText().trim();
-            String termino2 = txtTermino2.getText().trim(); // Ej: "+3x"
-            String variable2 = txtVariable2.getText().trim();
-            String termino3 = txtTermino3.getText().trim(); // Constante
 
-            // Convertir a números
-            double a = Double.parseDouble(termino1);
-            int b = Integer.parseInt(potencia);
-            String strTermino2 = termino2.replaceAll("[^\\d\\-\\.]", "");
-            double c = Double.parseDouble(strTermino2);
-            double d = Double.parseDouble(termino3);
+        //INTERVALOS y VALOR f(x)
+        try {
+            // Valores por defecto
+            String potencia1 = txtPotencia1.getText().trim();
+            int poten1 = Integer.parseInt(potencia1);
+
+            String termino1 = txtTermino1.getText().trim();
+            double term1 = Double.parseDouble(termino1);
+
+            // Leer y validar segundo término (puede estar vacío)
+            double coef2 = 0;
+            int pot2 = 0;
+            boolean tieneSegundoTermino = !txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty();
+            if (tieneSegundoTermino) {
+                coef2 = Double.parseDouble(txtTermino2.getText().trim());
+                pot2 = Integer.parseInt(txtPotencia2.getText().trim());
+            }
+
+            // Leer constante
+            double constante = 0;
+            if (!txtTermino3.getText().trim().isEmpty()) {
+                constante = Double.parseDouble(txtTermino3.getText().trim());
+            }
 
             // Modelo para la tabla
+            DecimalFormat formato = new DecimalFormat("#.00");
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.addColumn("x");
             modelo.addColumn("f(x)");
 
-            // Formateador de decimales
-            DecimalFormat formato = new DecimalFormat("#.00");
+            //Muestra de intervalos
+            Double fxAnterior = null;
+            Integer xAnterior = null;
+            List<String> intervalosCambio = new ArrayList<>();
 
-            // Calcular y llenar tabla
             for (int x = 5; x >= -5; x--) {
-                double fx = a * Math.pow(x, b) + c * x + d;
-                String fxFormateado = formato.format(fx);
-                modelo.addRow(new Object[]{x, fxFormateado});
+                double fx = term1 * Math.pow(x, poten1);
+                if (tieneSegundoTermino) {
+                    fx += coef2 * Math.pow(x, pot2);
+                }
+                fx += constante;
+
+                // Detectar cambio de signo entre valores consecutivos
+                if (fxAnterior != null && (fxAnterior * fx < 0)) {
+                    intervalosCambio.add("(" + x + ", " + xAnterior + ")");
+                }
+
+                fxAnterior = fx;
+                xAnterior = x;
+
+                modelo.addRow(new Object[]{x, formato.format(fx)});
             }
 
-            // Asignar modelo a la tabla
+            // Asignar modelo
+            tblIntervalos.setModel(modelo);
             tblIntervalos.setModel(modelo);
 
-            // Centrado para columna "x"
+            // Mostrar en Text Area
+            if (intervalosCambio.isEmpty()) {
+                txtIntervalos.setText("No hay cambio de signo en los intervalos.");
+            } else {
+                txtIntervalos.setText("");
+                for (String intervalo : intervalosCambio) {
+                    txtIntervalos.append(intervalo + "\n");
+                }
+            }
+
+            // Centrar columnas
             DefaultTableCellRenderer centrado = new DefaultTableCellRenderer();
             centrado.setHorizontalAlignment(SwingConstants.CENTER);
             tblIntervalos.getColumnModel().getColumn(0).setCellRenderer(centrado);
-
-            // Color rojo si es negativo + centrado para f(x)
             tblIntervalos.getColumnModel().getColumn(1).setCellRenderer(new ColorRenderer() {
                 {
                     setHorizontalAlignment(SwingConstants.CENTER);
@@ -360,9 +405,91 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             });
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingrese los valores" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese los valores correctamente: " + ex.getMessage());
+        }
+
+        //DERIVADAS 
+        try {
+            // Leer datos del primer término
+            double coef1 = Double.parseDouble(txtTermino1.getText().trim());
+            int pot1 = Integer.parseInt(txtPotencia1.getText().trim());
+
+            // Derivada del primer término: a·n·x^(n-1)
+            double derCoef1 = coef1 * pot1;
+            int derPot1 = pot1 - 1;
+
+            //Segunda derivada primer término 
+            double segDerCoef1 = derCoef1 * derPot1;
+            int segDerPot1 = derPot1 - 1;
+
+            // Segundo término
+            String termino2Str = txtTermino2.getText().trim(); // ej: "+3x" o "-2x"
+            double coef2 = Double.parseDouble(termino2Str.replaceAll("[^\\d\\-\\.]", ""));
+            int pot2 = Integer.parseInt(txtPotencia2.getText().trim());
+
+            double derCoef2 = coef2 * pot2;
+            int derPot2 = pot2 - 1;
+
+            //Segunda derivada
+            double segDerCoef2 = derCoef2 * derPot2;
+            int segDerPot2 = derPot2 - 1;
+
+            /// Construcción de derivada
+            StringBuilder primeraDerivada = new StringBuilder();
+            StringBuilder segundaDerivada = new StringBuilder();
+
+            // f'(x)
+            if (derCoef1 != 0) {
+                primeraDerivada.append(formatearDerivado(derCoef1, derPot1));
+            }
+            if (derCoef2 != 0) {
+                if (derCoef2 > 0 && primeraDerivada.length() > 0) {
+                    primeraDerivada.append("+");
+                }
+                primeraDerivada.append(formatearDerivado(derCoef2, derPot2));
+            }
+
+            // f''(x)
+            if (segDerCoef1 != 0) {
+                segundaDerivada.append(formatearDerivado(segDerCoef1, segDerPot1));
+            }
+            if (segDerCoef2 != 0) {
+                if (segDerCoef2 > 0 && segundaDerivada.length() > 0) {
+                    segundaDerivada.append("+");
+                }
+                segundaDerivada.append(formatearDerivado(segDerCoef2, segDerPot2));
+            }
+
+            // Mostrar resultados
+            txtFuncionDerivada.setText(primeraDerivada.toString());
+            txtSegundaDerivada.setText(segundaDerivada.toString());
+
+        } catch (Exception ex) {
+            txtFuncionDerivada.setText("Error");
+            txtSegundaDerivada.setText("Error");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtSimPotencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSimPotencia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSimPotencia1ActionPerformed
+
+    private void btnMostrarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTablasActionPerformed
+        VistaRaicesMultiplesTablas vi = new VistaRaicesMultiplesTablas();
+        vi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMostrarTablasActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtPotencia1.setText("");
+        txtPotencia2.setText("");
+        txtTermino1.setText("");
+        txtTermino2.setText("");
+        txtTermino3.setText("");
+        txtSegundaDerivada.setText("");
+        txtFuncionDerivada.setText("");
+        txtIntervalos.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,7 +528,10 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnDerivar;
     private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnMostrarTablas;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnResolver;
     private javax.swing.JPanel fondoPanel;
@@ -410,21 +540,23 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private javax.swing.JLabel imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel recurrencia;
     private javax.swing.JLabel segundaFuncion;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tblIntervalos;
-    private javax.swing.JTable tblRaicesMultiples;
-    private javax.swing.JScrollPane tblTablaRaicesMultiples;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtFuncionDerivada;
-    private javax.swing.JTextField txtPotencia;
-    private javax.swing.JTextField txtRecurrencia;
+    private javax.swing.JTextArea txtIntervalos;
+    private javax.swing.JTextField txtPotencia1;
+    private javax.swing.JTextField txtPotencia2;
+    private javax.swing.JTextArea txtRecurrencias;
     private javax.swing.JTextField txtSegundaDerivada;
-    private javax.swing.JTextField txtSimPotencia;
+    private javax.swing.JTextField txtSimPotencia1;
+    private javax.swing.JTextField txtSimPotencia2;
     private javax.swing.JTextField txtTermino1;
     private javax.swing.JTextField txtTermino2;
     private javax.swing.JTextField txtTermino3;

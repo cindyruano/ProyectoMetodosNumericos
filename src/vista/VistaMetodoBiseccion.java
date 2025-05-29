@@ -101,6 +101,7 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         fondoPanel.setBackground(new java.awt.Color(157, 174, 202));
         fondoPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         fondoPanel.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+        fondoPanel.setPreferredSize(new java.awt.Dimension(1150, 670));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -112,6 +113,8 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         titulo.setText("MÉTODO BISECCIÓN");
         fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 100, 1150, -1));
 
+        separador.setBackground(new java.awt.Color(255, 255, 255));
+        separador.setForeground(new java.awt.Color(255, 255, 255));
         separador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         separador.setOpaque(true);
         fondoPanel.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 127, 310, -1));
@@ -247,11 +250,11 @@ public class VistaMetodoBiseccion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+            .addComponent(fondoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
