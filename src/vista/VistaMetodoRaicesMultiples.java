@@ -25,6 +25,7 @@ import vista.VistaRaicesMultiplesTablas;
  */
 public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
 
+    //Instancias de clase 
     private VistaRaicesMultiplesTablas vistaTablas;
     private DefaultTableModel modeloIntervalo1;
     private DefaultTableModel modeloIntervalo2;
@@ -41,49 +42,49 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     //PRIMERA DERIVADA
     private String formatDerivado(double coef, int pot) {
         if (pot == 0) {
-            return String.valueOf(coef);
+            return String.valueOf(coef); //Se devuelve el mismo valor
         }
         if (pot == 1) {
-            return coef + "x";
+            return coef + "x"; //No lleva exponente
         }
-        return coef + "x^" + pot;
+        return coef + "x^" + pot; //Devuelve el formato completo con potencias
     }
 
     //SEGUNDA DERIVADA 
     private String formatearDerivado(double coef, int pot) {
-        String coefStr = (coef == (int) coef) ? String.valueOf((int) coef) : String.valueOf(coef);
+        String coefStr = (coef == (int) coef) ? String.valueOf((int) coef) : String.valueOf(coef); //Si es entero se mantiene entero, si es decimal como decimal
         if (pot == 0) {
-            return coefStr;
+            return coefStr; //Devuelve solo el coeficiente
         }
         if (pot == 1) {
-            return coefStr + "x";
+            return coefStr + "x"; //Devuelve el coeficiente seguido de "x"
         }
-        return coefStr + "x^" + pot;
+        return coefStr + "x^" + pot; //Devuelve el término completo
     }
 
     //EVALUAR DERIVADAS 
     private double evaluarFuncion(double x) {
-        double resultado = 0;
-        resultado += Double.parseDouble(txtTermino1.getText()) * Math.pow(x, Integer.parseInt(txtPotencia1.getText()));
+        double resultado = 0; //Inicializa la variable que almacenará la suma de los términos.
+        resultado += Double.parseDouble(txtTermino1.getText()) * Math.pow(x, Integer.parseInt(txtPotencia1.getText())); //Lee coef y pot,los multiplica y se suman al resultado
         if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
             resultado += Double.parseDouble(txtTermino2.getText()) * Math.pow(x, Integer.parseInt(txtPotencia2.getText()));
-        }
+        } //Verifica que el segundo término y potencia no estén vacíos. Si tienen se multiplican y se suman al resultado
         if (!txtTermino3.getText().trim().isEmpty()) {
-            resultado += Double.parseDouble(txtTermino3.getText());
+            resultado += Double.parseDouble(txtTermino3.getText()); //Si hay un valor en termino 3, lo suma como un término constante (independiente de x).
         }
-        return resultado;
+        return resultado; //Devuelve el resultado total de la evaluación de la función en x.
     }
 
     private double evaluarPrimeraDerivada(double x) {
-        double resultado = 0;
+        double resultado = 0; //Inicializa el acumulador para la suma de los términos derivados.
         double coef1 = Double.parseDouble(txtTermino1.getText());
-        int pot1 = Integer.parseInt(txtPotencia1.getText());
+        int pot1 = Integer.parseInt(txtPotencia1.getText()); //Lee coef y pot
 
-        resultado += coef1 * pot1 * Math.pow(x, pot1 - 1);
+        resultado += coef1 * pot1 * Math.pow(x, pot1 - 1); //Formula
         if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
             double coef2 = Double.parseDouble(txtTermino2.getText());
             int pot2 = Integer.parseInt(txtPotencia2.getText());
-            resultado += coef2 * pot2 * Math.pow(x, pot2 - 1);
+            resultado += coef2 * pot2 * Math.pow(x, pot2 - 1); //Si existe el 2 término y pot, hace el mismo proceso para el 2 término y + el resultado.
         }
         return resultado;
     }
@@ -92,15 +93,15 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
         double resultado = 0;
         double coef1 = Double.parseDouble(txtTermino1.getText());
         int pot1 = Integer.parseInt(txtPotencia1.getText());
-        if (pot1 >= 2) {
+        if (pot1 >= 2) { //Solo calcula la segunda derivada si la potencia es mayor o igual a 2
             resultado += coef1 * pot1 * (pot1 - 1) * Math.pow(x, pot1 - 2);
         }
         if (!txtTermino2.getText().trim().isEmpty() && !txtPotencia2.getText().trim().isEmpty()) {
             double coef2 = Double.parseDouble(txtTermino2.getText());
             int pot2 = Integer.parseInt(txtPotencia2.getText());
             if (pot2 >= 2) {
-                resultado += coef2 * pot2 * (pot2 - 1) * Math.pow(x, pot2 - 2);
-            }
+                resultado += coef2 * pot2 * (pot2 - 1) * Math.pow(x, pot2 - 2); 
+            } //Si el 2 término y pot existen, hace el mismo cálculo para el 2 término y + al resultado.
         }
         return resultado;
     }
@@ -575,7 +576,7 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
             double segDerCoef2 = derCoef2 * derPot2;
             int segDerPot2 = derPot2 - 1;
 
-            // Construcción de derivada
+            //Construcción de derivada
             StringBuilder primeraDerivada = new StringBuilder();
             StringBuilder segundaDerivada = new StringBuilder();
 
@@ -617,15 +618,15 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
 
         try {
-            double[] intervalos = new double[4];
+            double[] intervalos = new double[4]; //Declara un arreglo de 4 elementos
             JTextField[] campos = {txtIntervalo1, txtIntervalo2, txtIntervalo3, txtIntervalo4};
             DefaultTableModel[] modelos = new DefaultTableModel[4];
             StringBuilder resumenXr = new StringBuilder();
 
-            for (int j = 0; j < 4; j++) {
-                if (!campos[j].getText().trim().isEmpty()) {
-                    double xi = Double.parseDouble(campos[j].getText().trim());
-                    DefaultTableModel modeloTabla = new DefaultTableModel();
+            for (int j = 0; j < 4; j++) { //Inicia un ciclo que va de 0 a 3
+                if (!campos[j].getText().trim().isEmpty()) { //Verifica que el campo de texto del intervalo j no esté vacío
+                    double xi = Double.parseDouble(campos[j].getText().trim()); //Convierte a decimal 
+                    DefaultTableModel modeloTabla = new DefaultTableModel(); //Crea un nuevo modelo de tabla vacío que se usará para mostrar filas y columnas con los resultados.
                     modeloTabla.addColumn("i");
                     modeloTabla.addColumn("Xi");
                     modeloTabla.addColumn("f(Xi)");
@@ -634,21 +635,22 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                     modeloTabla.addColumn("Xr");
                     modeloTabla.addColumn("Tolerancia");
 
-                    int i = 1;
+                    int i = 1; //Contador de iteraciones, inicia en 1
                     double xrAnterior = xi;
                     double tolerancia = 1;
                     DecimalFormat formato = new DecimalFormat("0.0000");
 
-                    while (tolerancia > 0.0001) {
+                    while (tolerancia > 0.0001) { //Se ejecuta mientras la diferencia entre aproximaciones sea mayor a 0.0001
                         double fx = evaluarFuncion(xi);
                         double f1x = evaluarPrimeraDerivada(xi);
                         double f2x = evaluarSegundaDerivada(xi);
 
+                        //Formula
                         double xr = xi - ((fx * f1x) / ((Math.pow(f1x, 2)) - (fx * f2x)));
 
-                        String tolTexto = (i == 0) ? "------" : formato.format(Math.abs(xr - xrAnterior));
+                        String tolTexto = (i == 0) ? "------" : formato.format(Math.abs(xr - xrAnterior)); //Primera tolerancia
 
-                        modeloTabla.addRow(new Object[]{
+                        modeloTabla.addRow(new Object[]{ //Añade una fila con estos datos:
                             i,
                             formato.format(xi),
                             formato.format(fx),
@@ -658,13 +660,14 @@ public class VistaMetodoRaicesMultiples extends javax.swing.JFrame {
                             tolTexto
                         });
 
+                        //Actualizaciones 
                         tolerancia = Math.abs(xr - xrAnterior);
                         xrAnterior = xr;
                         xi = xr;
-                        i++;
+                        i++; //Incrementa el contador de iteraciones i.
                     }
 
-                    modelos[j] = modeloTabla;
+                    modelos[j] = modeloTabla; //Guarda el modelo de tabla lleno con las iteraciones y resultados para el intervalo j dentro del arreglo modelos.
                     resumenXr.append("Intervalo ").append(j + 1).append(": ").append(formato.format(xrAnterior)).append("\n");
                 }
             }

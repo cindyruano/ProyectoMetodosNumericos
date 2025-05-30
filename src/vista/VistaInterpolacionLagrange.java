@@ -206,6 +206,7 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
             List<Double> X = new ArrayList<>();
             List<Double> fX = new ArrayList<>();
 
+            //Lee valores y los almacena en X y Y
             for (int i = 0; i < 5; i++) {
                 String xText = xFields[i].getText().trim();
                 String fxText = fxFields[i].getText().trim();
@@ -221,21 +222,24 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
                 return;
             }
 
+            //Inicializa resultado,indica si se encontró un intervalo válido para interpolar.
             double resultado = 0;
             boolean encontrado = false;
 
+            //Toma los dos únicos puntos disponibles: (X0, fX0) y (X1, fX1).
             if (X.size() == 2) {
-                // Solo 2 puntos: usar fórmula simétrica
                 double X0 = X.get(0);
                 double X1 = X.get(1);
                 double fX0 = fX.get(0);
                 double fX1 = fX.get(1);
 
+                //Verifica que los dos valores de X sean distintos.
                 if (X0 == X1) {
                     JOptionPane.showMessageDialog(this, "X0 y X1 no pueden ser iguales.");
                     return;
                 }
 
+                //Formula
                 resultado = ((x - X1) / (X0 - X1)) * fX0 + ((x - X0) / (X1 - X0)) * fX1;
                 encontrado = true;
 
@@ -247,12 +251,15 @@ public class VistaInterpolacionLagrange extends javax.swing.JFrame {
                     double fXi = fX.get(i);
                     double fXi1 = fX.get(i + 1);
 
+                    //Verifica si el punto x está dentro del tramo actual [Xi, Xi+1].
                     if ((x >= Xi && x <= Xi1) || (x >= Xi1 && x <= Xi)) {
+                        //Evita división entre cero si los puntos son iguales (error lógico).
                         if (Xi == Xi1) {
                             JOptionPane.showMessageDialog(this, "X[" + i + "] y X[" + (i + 1) + "] no pueden ser iguales.");
                             return;
                         }
 
+                        //Formula
                         resultado = ((x - Xi1) / (Xi - Xi1)) * fXi + ((x - Xi) / (Xi1 - Xi)) * fXi1;
                         encontrado = true;
                         break;

@@ -233,6 +233,7 @@ public class VistaDosIncognitas extends javax.swing.JFrame {
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
 
+        //Verificar campos
         if (txtx1.getText().trim().isEmpty() || txtx2.getText().trim().isEmpty()
                 || txty1.getText().trim().isEmpty() || txty2.getText().trim().isEmpty()
                 || txtti1.getText().trim().isEmpty() || txtti2.getText().trim().isEmpty()) {
@@ -242,6 +243,8 @@ public class VistaDosIncognitas extends javax.swing.JFrame {
         }
 
         try {
+            
+            //Convertir texto a numeros decimales. 
             float X1 = Float.parseFloat(txtx1.getText());
             float X2 = Float.parseFloat(txtx2.getText());
 

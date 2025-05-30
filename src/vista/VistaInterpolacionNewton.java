@@ -234,9 +234,9 @@ public class VistaInterpolacionNewton extends javax.swing.JFrame {
 
             // Buscar el intervalo adecuado
             boolean encontrado = false;
-            for (int i = 0; i < 5; i++) {
-                if (x >= X[i] && x <= X[i + 1]) {
-                    // Aplicar interpolación lineal entre X[i] y X[i+1]
+            for (int i = 0; i < 5; i++) { //X cuenta con almenos 6 elementos 
+                if (x >= X[i] && x <= X[i + 1]) {  //X dentro del intervalo anterior
+                    // Aplicar interpolación lineal entre X[i] y X[i+1] FORMULA
                     double resultado = ((x - X[i]) / (X[i + 1] - X[i])) * (Y[i + 1] - Y[i]) + Y[i];
                     txtResultado.setText(String.format("%.2f", resultado)); 
                     encontrado = true;

@@ -283,6 +283,7 @@ public class VistaTresIncognitas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Verificacion de todos los campos 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
 
         if (x1.getText().trim().isEmpty() || x2.getText().trim().isEmpty() || x3.getText().trim().isEmpty()
@@ -295,6 +296,7 @@ public class VistaTresIncognitas extends javax.swing.JFrame {
         }
 
         try {
+            //Convertir texto a numeros decimales. 
             float X1 = Float.parseFloat(x1.getText());
             float X2 = Float.parseFloat(x2.getText());
             float X3 = Float.parseFloat(x3.getText());
@@ -322,6 +324,7 @@ public class VistaTresIncognitas extends javax.swing.JFrame {
                 return;
             }
 
+            //TI = Termino independiente
             float detAx = (TI1 * Y2 * Z3) + (Y1 * Z2 * TI3) + (Z1 * TI2 * Y3)
                     - (Y1 * TI2 * Z3) - (TI1 * Z2 * Y3) - (Z1 * Y2 * TI3);
 

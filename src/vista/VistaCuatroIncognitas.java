@@ -39,7 +39,7 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
                         m[3][0], m[3][1], m[3][2]);
     }
 
-// Método para calcular determinante de matriz 3x3
+    // Método para calcular determinante de matriz 3x3
     private double determinante3x3(double a11, double a12, double a13,
             double a21, double a22, double a23,
             double a31, double a32, double a33) {
@@ -48,7 +48,7 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
                 + a13 * (a21 * a32 - a22 * a31);
     }
 
-// Método para reemplazar la columna 'col' de una matriz 4x4 con un vector columna de 4 elementos
+    // Método para reemplazar la columna 'col' de una matriz 4x4 con un vector columna de 4 elementos
     private double[][] reemplazarColumna(double[][] matriz, double[] columna, int col) {
         double[][] nueva = new double[4][4];
         for (int i = 0; i < 4; i++) {
