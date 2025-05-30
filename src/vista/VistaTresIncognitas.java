@@ -286,6 +286,7 @@ public class VistaTresIncognitas extends javax.swing.JFrame {
     //Verificacion de todos los campos 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
 
+        //Verificar campos
         if (x1.getText().trim().isEmpty() || x2.getText().trim().isEmpty() || x3.getText().trim().isEmpty()
                 || y1.getText().trim().isEmpty() || y2.getText().trim().isEmpty() || y3.getText().trim().isEmpty()
                 || z1.getText().trim().isEmpty() || z2.getText().trim().isEmpty() || z3.getText().trim().isEmpty()
