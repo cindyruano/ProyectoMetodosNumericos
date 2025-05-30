@@ -340,9 +340,7 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1144, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(fondoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
