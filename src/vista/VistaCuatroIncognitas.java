@@ -24,6 +24,8 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
     }
 
     // Método para calcular determinante de matriz 4x4
+    // det(m)=m00*det(M00)−m01*det(M01)+m02*det(M02)−m03*det(M03)
+    // m0j = cada elemento de la 1 fila || M0j = menor complementario
     private double determinante4x4(double[][] m) {
         return m[0][0] * determinante3x3(m[1][1], m[1][2], m[1][3],
                 m[2][1], m[2][2], m[2][3],
@@ -40,6 +42,7 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
     }
 
     // Método para calcular determinante de matriz 3x3
+    // det=a11*(a22*a33−a23*a32)−a12*(a21*a33−a23*a31)+a13*(a21*a32−a22*a31)
     private double determinante3x3(double a11, double a12, double a13,
             double a21, double a22, double a23,
             double a31, double a32, double a33) {
@@ -430,7 +433,7 @@ public class VistaCuatroIncognitas extends javax.swing.JFrame {
                 return;
             }
 
-            // Reemplazo de columnas para Cramer
+            // Reemplazo de columnas || Método Cramer
             double x = determinante4x4(reemplazarColumna(A, B, 0)) / detA;
             double y = determinante4x4(reemplazarColumna(A, B, 1)) / detA;
             double z = determinante4x4(reemplazarColumna(A, B, 2)) / detA;

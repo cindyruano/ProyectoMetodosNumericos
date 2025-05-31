@@ -24,6 +24,7 @@ public class VistaRaicesMultiplesTablas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    //Métodos setters
     public void setModeloIntervalo1(DefaultTableModel modelo) {
         tblIntervalo1.setModel(modelo);
     }
